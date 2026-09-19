@@ -1,0 +1,66 @@
+name: Deploy
+
+# Läuft, sobald ein Pull Request nach main gemergt ist.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Zwei gleichzeitige Deploys würden sich beim Spiegeln in die Quere kommen.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    name: Nach S3 spiegeln und Cache leeren
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: An AWS anmelden
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION || 'eu-central-1' }}
+
+      - name: Dateien nach S3 spiegeln
+        env:
+          BUCKET: ${{ vars.AWS_SITE_BUCKET }}
+        run: |
+          set -euo pipefail
+          # max-age=0 lässt Browser bei jedem Aufruf nachfragen, s-maxage hält
+          # die Datei trotzdem lange im CDN. Zusammen mit der Invalidierung
+          # unten ist eine Änderung damit sofort sichtbar.
+          aws s3 sync . "s3://${BUCKET}" \
+            --delete \
+            --no-progress \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude ".claude/*" \
+            --exclude "design/*" \
+            --exclude "infra/*" \
+            --exclude "README.md" \
+            --cache-control "public, max-age=0, s-maxage=31536000, must-revalidate"
+
+      - name: CloudFront-Cache leeren
+        env:
+          DISTRIBUTION: ${{ vars.AWS_DISTRIBUTION_ID }}
+        run: |
+          set -euo pipefail
+          id=$(aws cloudfront create-invalidation \
+            --distribution-id "${DISTRIBUTION}" \
+            --paths '/*' \
+            --query 'Invalidation.Id' \
+            --output text)
+          echo "Invalidierung ${id} gestartet."
+          # Wartet, bis die Änderung an allen Edge-Standorten gilt. Der Job ist
+          # damit erst grün, wenn die Seite wirklich neu ausgeliefert wird.
+          aws cloudfront wait invalidation-completed \
+            --distribution-id "${DISTRIBUTION}" \
+            --id "${id}"
+          echo "Seite ist aktuell."
