@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entwurf 3 — Raster</title>
+<style>
+  :root{ --anthrazit:#1B2430; --kupfer:#C0713C; --grau:#6B7683; --papier:#F5F3EF; --linie:#1B2430; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papier);color:var(--anthrazit);
+       font-family:Inter,'Segoe UI','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.6}
+  .wrap{max-width:1080px;margin:0 auto;border-left:1px solid var(--linie);border-right:1px solid var(--linie)}
+  .zelle{padding:26px 28px;border-bottom:1px solid var(--linie)}
+  .kopf{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+        padding:16px 28px;border-bottom:1px solid var(--linie)}
+  .marke{font-size:24px;font-weight:700;letter-spacing:-.4px}
+  .marke small{display:block;font-size:9px;font-weight:600;letter-spacing:2.6px;color:var(--grau);margin-top:1px}
+  nav a{color:var(--anthrazit);text-decoration:none;margin-left:18px;font-size:14px;
+        font-family:ui-monospace,'Cascadia Mono',Consolas,monospace}
+  nav a:hover{color:var(--kupfer)}
+  .mono{font-family:ui-monospace,'Cascadia Mono',Consolas,monospace}
+  .schild{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--grau);margin:0 0 14px}
+  h1{font-size:40px;line-height:1.15;font-weight:700;letter-spacing:-1px;margin:0 0 14px;max-width:16em}
+  .lead{color:var(--grau);max-width:34em;margin:0 0 24px;font-size:18px}
+  .btn{display:inline-block;background:var(--anthrazit);color:var(--papier);text-decoration:none;
+       padding:13px 22px;font-size:15px;font-weight:500}
+  .btn:hover{background:var(--kupfer)}
+  .raster2{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--linie)}
+  .raster2>div{padding:22px 28px}
+  .raster2>div:first-child{border-right:1px solid var(--linie)}
+  .raster4{display:grid;grid-template-columns:repeat(2,1fr)}
+  .raster4>div{padding:20px 28px;border-bottom:1px solid var(--linie);font-size:18px}
+  .raster4>div:nth-child(odd){border-right:1px solid var(--linie)}
+  .raster3{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--linie)}
+  .raster3>div{padding:24px 28px}
+  .raster3>div+div{border-left:1px solid var(--linie)}
+  .nr{font-size:12px;letter-spacing:1px;color:var(--kupfer);font-family:ui-monospace,Consolas,monospace}
+  .raster3 h3{margin:6px 0 10px;font-size:19px}
+  .preis{font-size:30px;font-weight:700;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+  .preis span{display:block;font-size:12px;font-weight:400;color:var(--grau);letter-spacing:0}
+  .raster3 p{color:var(--grau);font-size:14px;margin:12px 0 0}
+  .person{display:flex;gap:16px;align-items:center}
+  .ph{width:72px;height:72px;flex:none;background:#E3DED6;border:1px solid var(--linie);color:var(--grau);
+      display:flex;align-items:center;justify-content:center;font-size:10px;text-align:center;line-height:1.2}
+  .person h4{margin:0;font-size:17px}
+  .person p{margin:2px 0 0;color:var(--grau);font-size:14px}
+  .cta{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+       background:var(--anthrazit);color:var(--papier);padding:32px 28px}
+  .cta b{font-size:30px;font-weight:700;letter-spacing:-.5px}
+  .cta .btn{background:var(--kupfer);color:#fff}
+  footer{color:var(--grau);font-size:13px;padding:18px 28px 48px}
+  footer a{color:var(--grau)}
+  @media(max-width:760px){.raster2,.raster3,.raster4{grid-template-columns:1fr}
+    .raster2>div:first-child,.raster3>div+div,.raster4>div:nth-child(odd){border-right:0;border-left:0}
+    .raster2>div:first-child{border-bottom:1px solid var(--linie)}
+    .raster3>div+div{border-top:1px solid var(--linie)} h1{font-size:30px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kopf">
+    <div class="marke">Kiratio<small>KI-BERATUNG UND UMSETZUNG</small></div>
+    <nav><a href="#">/potenzialanalyse</a><a href="#">/umsetzung</a><a href="#">/foerderung</a><a href="#">/ueber-uns</a><a href="#">0931 000000</a></nav>
+  </div>
+
+  <div class="zelle">
+    <p class="schild">KI-Beratung und Umsetzung · Mainfranken</p>
+    <h1>Wir bringen KI in den mainfränkischen Mittelstand.</h1>
+    <p class="lead">Von der geförderten Potenzialanalyse bis zum laufenden System. Vor Ort, umsetzungsstark, ohne Konzernberater-Overhead.</p>
+    <a class="btn" href="#">Erstgespräch vereinbaren</a>
+    <p class="mono" style="font-size:13px;color:var(--grau);margin:16px 0 0">BAFA-Beratungsförderung · Digitalbonus Bayern</p>
+  </div>
+
+  <div class="raster2"><div><p class="schild">Kennen Sie das?</p></div><div class="mono" style="color:var(--grau);font-size:13px">04 typische Fälle</div></div>
+  <div class="raster4">
+    <div>Ein größeres Angebot zu schreiben dauert zwei Tage.</div>
+    <div>Das Wissen steckt in drei Köpfen, zwei gehen bald in Rente.</div>
+    <div>Das Postfach frisst jeden Vormittag.</div>
+    <div>Serviceberichte tippt am Ende jemand ein zweites Mal ab.</div>
+  </div>
+
+  <div class="raster2"><div><p class="schild">In drei Schritten</p></div><div class="mono" style="color:var(--grau);font-size:13px">Preise netto</div></div>
+  <div class="raster3">
+    <div><div class="nr">STUFE 01</div><h3>KI-Potenzialanalyse</h3>
+      <div class="preis">3.500 €<span>mit BAFA effektiv 1.750 €</span></div>
+      <p>Zwei bis vier Wochen: Prozessaufnahme vor Ort, Datenlage, drei bis fünf priorisierte Anwendungsfälle, Bericht mit Roadmap.</p></div>
+    <div><div class="nr">STUFE 02</div><h3>Umsetzung</h3>
+      <div class="preis">Festpreis<span>nach der Analyse</span></div>
+      <p>Wir bauen das System selbst und binden es an Ihre Bestandssysteme an. Den Digitalbonus-Antrag bereiten wir mit vor.</p></div>
+    <div><div class="nr">STUFE 03</div><h3>Betrieb</h3>
+      <div class="preis">ab 500 €<span>im Monat, quartalsweise kündbar</span></div>
+      <p>Wartung, Monitoring, Pflege der Modelle, Schulung Ihrer Leute, kleinere Erweiterungen.</p></div>
+  </div>
+
+  <div class="raster2">
+    <div class="person"><div class="ph">Foto<br>Platzhalter</div>
+      <div><h4>Vorname Nachname (Platzhalter)</h4><p>Architektur und Frontend, 15 Jahre in regulierten Branchen.</p></div></div>
+    <div class="person"><div class="ph">Foto<br>Platzhalter</div>
+      <div><h4>Vorname Nachname (Platzhalter)</h4><p>Backend und Integration, 20 Jahre Java und Spring.</p></div></div>
+  </div>
+
+  <div class="cta">
+    <div><b>0931 000000</b><div style="font-size:14px;color:#B9C0C8">Erstgespräch, eine halbe Stunde, kostet nichts.</div></div>
+    <a class="btn" href="#">Termin vereinbaren</a>
+  </div>
+  <footer>Kiratio (Platzhalter) · Musterstraße 1, 97318 Musterstadt · post@kiratio.de · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></footer>
+</div>
+</body>
+</html>

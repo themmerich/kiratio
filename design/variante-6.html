@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entwurf 6 — Trust und Authority</title>
+<!-- Schrift IBM Plex Sans: vor dem Livegang selbst hosten, nicht von Google laden (DSGVO). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --anthrazit:#1B2430; --kupfer:#C0713C; --grau:#6B7683; --papier:#F7F5F2; --linie:#E1DCD4; }
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;color:var(--anthrazit);
+       font-family:"IBM Plex Sans",Inter,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.65}
+  a{transition:color .18s ease,background-color .18s ease}
+  a:focus-visible{outline:2px solid var(--kupfer);outline-offset:3px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  section.wrap{padding-top:60px;padding-bottom:60px}
+  header{border-bottom:1px solid var(--linie);position:sticky;top:0;background:rgba(255,255,255,.96);z-index:10}
+  .kopf{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:16px 0}
+  .marke{font-size:24px;font-weight:700;letter-spacing:-.5px}
+  .marke small{display:block;font-size:9px;font-weight:600;letter-spacing:2.6px;color:var(--grau)}
+  nav a{color:var(--anthrazit);text-decoration:none;margin-left:20px;font-size:15px}
+  nav a:hover{color:var(--kupfer)}
+  .btn{display:inline-block;background:var(--kupfer);color:#fff;text-decoration:none;
+       padding:13px 24px;font-size:16px;font-weight:600;border-radius:3px}
+  .btn:hover{background:#A85F30}
+  .btn.klein{padding:9px 16px;font-size:15px;margin-left:20px}
+  .hero{padding-top:68px;padding-bottom:40px;max-width:44rem}
+  h1{font-size:44px;line-height:1.15;font-weight:700;letter-spacing:-1.2px;margin:0 0 18px}
+  .lead{font-size:20px;color:#3A4450;margin:0 0 28px}
+  .belege{background:var(--papier);border-top:1px solid var(--linie);border-bottom:1px solid var(--linie)}
+  .belege-in{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:28px 0}
+  .beleg b{display:block;font-size:27px;font-weight:700;letter-spacing:-.6px;font-variant-numeric:tabular-nums}
+  .beleg span{font-size:14px;color:var(--grau);line-height:1.4;display:block;margin-top:2px}
+  section{padding:60px 0}
+  h2{font-size:28px;letter-spacing:-.6px;margin:0 0 8px}
+  .sub{color:var(--grau);margin:0 0 30px;max-width:38rem}
+  .probleme{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 32px}
+  .probleme p{margin:0;padding:16px 18px;background:var(--papier);border-left:3px solid var(--kupfer);font-size:18px}
+  .preise{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+  .tarif{border:1px solid var(--linie);border-radius:4px;padding:26px 24px;background:#fff}
+  .tarif.hervor{border:2px solid var(--kupfer);position:relative;box-shadow:0 6px 20px rgba(27,36,48,.07)}
+  .fahne{position:absolute;top:-12px;left:24px;background:var(--kupfer);color:#fff;font-size:12px;
+         font-weight:600;letter-spacing:.5px;padding:4px 10px;border-radius:2px}
+  .tarif h3{margin:0 0 4px;font-size:19px}
+  .tarif .p{font-size:32px;font-weight:700;letter-spacing:-1px;margin:10px 0 2px;font-variant-numeric:tabular-nums}
+  .tarif .p span{font-size:14px;font-weight:400;color:var(--grau)}
+  .tarif ul{list-style:none;margin:16px 0 0;padding:0;color:#3A4450;font-size:15px}
+  .tarif li{padding:6px 0 6px 22px;position:relative}
+  .tarif li::before{content:"";position:absolute;left:0;top:14px;width:10px;height:2px;background:var(--kupfer)}
+  .personen{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+  .person{display:flex;gap:18px;align-items:center;background:var(--papier);padding:20px;border-radius:4px}
+  .ph{width:92px;height:92px;flex:none;border-radius:4px;background:#E8E3DB;color:var(--grau);
+      display:flex;align-items:center;justify-content:center;font-size:11px;text-align:center}
+  .person h4{margin:0;font-size:18px}
+  .person p{margin:2px 0 0;color:var(--grau);font-size:15px}
+  .abschluss{background:var(--anthrazit);color:#fff}
+  .abschluss .wrap{padding:52px 28px}
+  .abschluss h2{color:#fff}
+  .abschluss p{color:#B9C0C8;max-width:36rem}
+  .tel{font-size:32px;font-weight:700;letter-spacing:-.8px;display:inline-block;margin-right:24px}
+  footer{color:var(--grau);font-size:14px;padding:24px 0 50px}
+  footer a{color:var(--grau)}
+  @media(prefers-reduced-motion:reduce){a{transition:none}}
+  @media(max-width:860px){.belege-in{grid-template-columns:repeat(2,1fr)}
+    .probleme,.preise,.personen{grid-template-columns:1fr}h1{font-size:32px}}
+</style>
+</head>
+<body>
+<header><div class="wrap kopf">
+  <div class="marke">Kiratio<small>KI-BERATUNG UND UMSETZUNG</small></div>
+  <nav><a href="#">Potenzialanalyse</a><a href="#">Umsetzung</a><a href="#">Förderung</a><a href="#">Über uns</a><a class="btn klein" href="#">Erstgespräch</a></nav>
+</div></header>
+
+<div class="wrap hero">
+  <h1>Wir bringen KI in den mainfränkischen Mittelstand.</h1>
+  <p class="lead">Von der geförderten Potenzialanalyse bis zum laufenden System. Vor Ort, umsetzungsstark, ohne Konzernberater-Overhead.</p>
+  <a class="btn" href="#">Erstgespräch vereinbaren</a>
+</div>
+
+<div class="belege"><div class="wrap belege-in">
+  <div class="beleg"><b>35 Jahre</b><span>Softwareentwicklung zu zweit, kein Juniorteam</span></div>
+  <div class="beleg"><b>50 %</b><span>Zuschuss über die BAFA-Beratungsförderung</span></div>
+  <div class="beleg"><b>45 km</b><span>Anfahrtsradius, wir kommen in den Betrieb</span></div>
+  <div class="beleg"><b>Festpreis</b><span>für jede Stufe, vorher schriftlich</span></div>
+</div></div>
+
+<section class="wrap">
+  <h2>Kennen Sie das?</h2>
+  <p class="sub">Vier Sätze, die wir in fast jedem Erstgespräch hören.</p>
+  <div class="probleme">
+    <p>Ein größeres Angebot zu schreiben dauert zwei Tage.</p>
+    <p>Das Wissen steckt in drei Köpfen, zwei gehen bald in Rente.</p>
+    <p>Das Postfach frisst jeden Vormittag.</p>
+    <p>Serviceberichte tippt am Ende jemand ein zweites Mal ab.</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Drei Stufen, jede einzeln buchbar</h2>
+  <p class="sub">Sie müssen sich nicht auf ein Projekt festlegen, um anzufangen. Die meisten beginnen mit der Analyse und entscheiden danach.</p>
+  <div class="preise">
+    <div class="tarif hervor"><span class="fahne">Der Einstieg</span>
+      <h3>KI-Potenzialanalyse</h3><div class="p">3.500 € <span>netto</span></div>
+      <div style="color:var(--kupfer);font-size:15px">mit BAFA effektiv 1.750 €</div>
+      <ul><li>Prozessaufnahme vor Ort</li><li>Bewertung der Datenlage</li><li>Drei bis fünf priorisierte Anwendungsfälle</li><li>Bericht mit Roadmap und Fördereinschätzung</li></ul></div>
+    <div class="tarif"><h3>Umsetzung</h3><div class="p">Festpreis</div>
+      <div style="color:var(--grau);font-size:15px">nach der Analyse</div>
+      <ul><li>Wir bauen selbst, keine Übergabe</li><li>Anbindung an Ihre Bestandssysteme</li><li>Digitalbonus-Antrag vorbereitet</li><li>Meilensteine schriftlich</li></ul></div>
+    <div class="tarif"><h3>Betrieb</h3><div class="p">ab 500 € <span>/ Monat</span></div>
+      <div style="color:var(--grau);font-size:15px">quartalsweise kündbar</div>
+      <ul><li>Wartung und Monitoring</li><li>Pflege der Modelle</li><li>Schulung Ihrer Leute</li><li>Kleinere Erweiterungen</li></ul></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Wer das macht</h2>
+  <p class="sub">Bei uns sitzen die beiden am Tisch, die es hinterher auch bauen.</p>
+  <div class="personen">
+    <div class="person"><div class="ph">Foto<br>Platzhalter</div>
+      <div><h4>Vorname Nachname (Platzhalter)</h4><p>Architektur und Frontend, 15 Jahre in regulierten Branchen.</p></div></div>
+    <div class="person"><div class="ph">Foto<br>Platzhalter</div>
+      <div><h4>Vorname Nachname (Platzhalter)</h4><p>Backend und Integration, 20 Jahre Java und Spring.</p></div></div>
+  </div>
+</section>
+
+<div class="abschluss"><div class="wrap">
+  <h2>Reden wir eine halbe Stunde darüber.</h2>
+  <p>Das Erstgespräch kostet nichts und endet mit einer klaren Aussage, ob sich KI bei Ihnen lohnt.</p>
+  <p style="margin-top:26px"><span class="tel">0931 000000</span><a class="btn" href="#">Erstgespräch vereinbaren</a></p>
+</div></div>
+<footer class="wrap">Kiratio (Platzhalter) · Musterstraße 1, 97318 Musterstadt · post@kiratio.de · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></footer>
+</body>
+</html>

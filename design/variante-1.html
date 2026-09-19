@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entwurf 1 — Datenblatt</title>
+<style>
+  :root{ --anthrazit:#1B2430; --kupfer:#C0713C; --grau:#6B7683; --papier:#F5F3EF; --linie:#D8D3CB; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papier);color:var(--anthrazit);
+       font-family:Inter,'Segoe UI','Helvetica Neue',Arial,sans-serif;font-size:17px;line-height:1.65}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--linie);padding:22px 0}
+  .kopf{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
+  .marke{font-size:26px;font-weight:600;letter-spacing:-.4px}
+  .marke small{display:block;font-size:10px;font-weight:500;letter-spacing:2.4px;color:var(--grau);margin-top:2px}
+  nav a{color:var(--anthrazit);text-decoration:none;margin-left:22px;font-size:15px}
+  nav a:hover{color:var(--kupfer)}
+  .tel{color:var(--grau);font-size:15px}
+  h1{font-size:34px;line-height:1.25;font-weight:600;letter-spacing:-.5px;margin:56px 0 16px;max-width:19em}
+  .lead{color:var(--grau);max-width:34em;margin:0 0 28px}
+  .btn{display:inline-block;border:1px solid var(--kupfer);color:var(--kupfer);text-decoration:none;
+       padding:11px 20px;font-size:16px}
+  .btn:hover{background:var(--kupfer);color:var(--papier)}
+  .foerder{font-size:14px;color:var(--grau);margin-top:14px}
+  .label{font-size:11px;letter-spacing:2.2px;color:var(--grau);text-transform:uppercase;
+         border-top:1px solid var(--linie);padding-top:10px;margin:64px 0 18px}
+  .problem{border-bottom:1px solid var(--linie);padding:14px 0;font-size:19px}
+  .stufe{border-bottom:1px solid var(--linie);padding:20px 0;display:grid;
+         grid-template-columns:2.2fr 1fr;gap:18px}
+  .stufe h3{margin:0 0 4px;font-size:19px;font-weight:600}
+  .stufe p{margin:0;color:var(--grau);font-size:15px;max-width:34em}
+  .preis{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .preis b{font-weight:600}
+  .preis span{display:block;font-size:13px;color:var(--grau)}
+  .person{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start;
+          border-bottom:1px solid var(--linie);padding:18px 0}
+  .ph{width:64px;height:64px;background:#E3DED6;color:var(--grau);display:flex;align-items:center;
+      justify-content:center;font-size:11px;text-align:center;line-height:1.2}
+  .person h4{margin:0;font-size:17px}
+  .person p{margin:2px 0 0;color:var(--grau);font-size:15px}
+  .schluss{margin:56px 0 0;padding:28px 0;border-top:2px solid var(--anthrazit)}
+  .schluss b{font-size:26px;font-weight:600}
+  footer{color:var(--grau);font-size:14px;padding:28px 0 56px}
+  footer a{color:var(--grau)}
+  @media(max-width:640px){.stufe{grid-template-columns:1fr}.preis{text-align:left}}
+</style>
+</head>
+<body>
+<header><div class="wrap kopf">
+  <div class="marke">Kiratio<small>KI-BERATUNG UND UMSETZUNG</small></div>
+  <nav><span class="tel">0931 000000</span><a href="#">Potenzialanalyse</a><a href="#">Umsetzung</a><a href="#">Förderung</a><a href="#">Über uns</a><a href="#">Kontakt</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Wir bringen KI in den mainfränkischen Mittelstand.</h1>
+  <p class="lead">Von der geförderten Potenzialanalyse bis zum laufenden System. Vor Ort, umsetzungsstark, ohne Konzernberater-Overhead.</p>
+  <a class="btn" href="#">Erstgespräch vereinbaren</a>
+  <p class="foerder">Förderfähig über die BAFA-Beratungsförderung und den Digitalbonus Bayern.</p>
+
+  <p class="label">Kennen Sie das?</p>
+  <div class="problem">Ein größeres Angebot zu schreiben dauert bei uns zwei Tage.</div>
+  <div class="problem">Das Wissen steckt in drei Köpfen, und zwei davon gehen bald in Rente.</div>
+  <div class="problem">Das Postfach frisst jeden Vormittag.</div>
+  <div class="problem">Serviceberichte tippt am Ende jemand ein zweites Mal ab.</div>
+
+  <p class="label">In drei Schritten</p>
+  <div class="stufe">
+    <div><h3>KI-Potenzialanalyse</h3><p>Zwei bis vier Wochen: Prozessaufnahme vor Ort, Bewertung der Datenlage, drei bis fünf priorisierte Anwendungsfälle, Bericht mit Roadmap.</p></div>
+    <div class="preis"><b>3.500 €</b><span>netto, mit BAFA effektiv 1.750 €</span></div>
+  </div>
+  <div class="stufe">
+    <div><h3>Umsetzung und Integration</h3><p>Wir bauen das priorisierte System selbst und binden es an Ihre Bestandssysteme an. Den Digitalbonus-Antrag bereiten wir mit vor.</p></div>
+    <div class="preis"><b>Festpreis</b><span>nach der Analyse</span></div>
+  </div>
+  <div class="stufe">
+    <div><h3>Betrieb und Weiterentwicklung</h3><p>Wartung, Monitoring, Pflege der Modelle, Schulung Ihrer Leute, kleinere Erweiterungen.</p></div>
+    <div class="preis"><b>ab 500 €</b><span>im Monat, quartalsweise kündbar</span></div>
+  </div>
+
+  <p class="label">Wer das macht</p>
+  <div class="person"><div class="ph">Foto<br>Platzhalter</div>
+    <div><h4>Vorname Nachname <span style="color:var(--grau);font-weight:400">(Platzhalter)</span></h4><p>Architektur und Frontend. Seit 15 Jahren Softwareprojekte in regulierten Branchen.</p></div></div>
+  <div class="person"><div class="ph">Foto<br>Platzhalter</div>
+    <div><h4>Vorname Nachname <span style="color:var(--grau);font-weight:400">(Platzhalter)</span></h4><p>Backend und Integration. 20 Jahre Java und Spring, Anbindung an ERP und Bestandssysteme.</p></div></div>
+
+  <div class="schluss">
+    <b>0931 000000</b>
+    <p class="lead" style="margin-top:8px">Rufen Sie an oder schreiben Sie uns. Das erste Gespräch kostet nichts und dauert eine halbe Stunde.</p>
+    <a class="btn" href="#">Erstgespräch vereinbaren</a>
+  </div>
+</main>
+<footer class="wrap">Kiratio (Platzhalter) · Musterstraße 1, 97318 Musterstadt · 0931 000000 · post@kiratio.de · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entwurf 5 — Swiss Modernism</title>
+<style>
+  :root{
+    --anthrazit:#1B2430; --kupfer:#C0713C; --grau:#6B7683; --papier:#FFFFFF; --linie:#DCD8D1;
+    --u:8px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papier);color:var(--anthrazit);
+       font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.55;
+       -webkit-font-smoothing:antialiased}
+  a{transition:color .18s ease,background-color .18s ease,border-color .18s ease}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--kupfer);outline-offset:3px}
+  .grid{max-width:1200px;margin:0 auto;padding:0 calc(var(--u)*3);
+        display:grid;grid-template-columns:repeat(12,1fr);gap:calc(var(--u)*3)}
+  header{border-bottom:1px solid var(--anthrazit);padding:calc(var(--u)*2) 0;margin-bottom:calc(var(--u)*9)}
+  .marke{grid-column:1/4;font-size:24px;font-weight:700;letter-spacing:-.6px}
+  .marke small{display:block;font-size:9px;font-weight:600;letter-spacing:2.6px;color:var(--grau);margin-top:2px}
+  header nav{grid-column:5/13;display:flex;justify-content:flex-end;align-items:center;gap:calc(var(--u)*3)}
+  header nav a{color:var(--anthrazit);text-decoration:none;font-size:15px}
+  header nav a:hover{color:var(--kupfer)}
+  h1{grid-column:1/9;font-size:clamp(34px,5vw,58px);line-height:1.05;font-weight:700;
+     letter-spacing:-1.8px;margin:0}
+  .lead{grid-column:1/6;color:var(--grau);font-size:19px;margin:calc(var(--u)*3) 0 0}
+  .aktion{grid-column:7/12;margin-top:calc(var(--u)*3)}
+  .btn{display:inline-block;background:var(--anthrazit);color:#fff;text-decoration:none;
+       padding:calc(var(--u)*1.75) calc(var(--u)*3);font-size:16px;font-weight:500}
+  .btn:hover{background:var(--kupfer)}
+  .meta{font-size:14px;color:var(--grau);margin-top:calc(var(--u)*2)}
+  .regel{grid-column:1/13;height:1px;background:var(--linie);margin:calc(var(--u)*9) 0 0}
+  .num{font-size:13px;font-weight:600;letter-spacing:1.5px;color:var(--kupfer)}
+  section{margin-top:calc(var(--u)*9)}
+  .titel{grid-column:1/4;font-size:13px;font-weight:600;letter-spacing:2.2px;text-transform:uppercase;color:var(--grau)}
+  .inhalt{grid-column:5/13}
+  .problem{font-size:23px;line-height:1.35;padding:calc(var(--u)*2) 0;border-bottom:1px solid var(--linie);margin:0}
+  .stufen{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*3)}
+  .stufe h3{font-size:19px;margin:calc(var(--u)*1.5) 0 calc(var(--u));font-weight:600}
+  .preis{font-size:30px;font-weight:700;letter-spacing:-1px;font-variant-numeric:tabular-nums;margin:0}
+  .preis small{display:block;font-size:13px;font-weight:400;color:var(--grau);letter-spacing:0;margin-top:4px}
+  .stufe p{color:var(--grau);font-size:15px;margin:calc(var(--u)*1.5) 0 0}
+  .personen{display:grid;grid-template-columns:repeat(2,1fr);gap:calc(var(--u)*4)}
+  .ph{aspect-ratio:4/3;background:#EFECE7;color:var(--grau);display:flex;align-items:center;
+      justify-content:center;font-size:12px}
+  .personen h4{margin:calc(var(--u)*1.5) 0 0;font-size:18px;font-weight:600}
+  .personen p{margin:4px 0 0;color:var(--grau);font-size:15px}
+  .cta{grid-column:1/13;background:var(--anthrazit);color:#fff;padding:calc(var(--u)*6);
+       display:flex;justify-content:space-between;align-items:center;gap:calc(var(--u)*4);flex-wrap:wrap;
+       margin-top:calc(var(--u)*9)}
+  .cta b{font-size:34px;font-weight:700;letter-spacing:-1px;display:block}
+  .cta p{margin:6px 0 0;color:#AEB6BF;font-size:16px}
+  .cta .btn{background:var(--kupfer)}
+  footer{grid-column:1/13;color:var(--grau);font-size:14px;padding:calc(var(--u)*4) 0 calc(var(--u)*7)}
+  footer a{color:var(--grau)}
+  @media(prefers-reduced-motion:reduce){a{transition:none}}
+  @media(max-width:900px){
+    .grid{grid-template-columns:repeat(6,1fr);gap:calc(var(--u)*2)}
+    .marke,h1,.lead,.aktion,.titel,.inhalt,.regel,.cta,footer{grid-column:1/7}
+    header nav{grid-column:1/7;justify-content:flex-start;flex-wrap:wrap;gap:calc(var(--u)*2);margin-top:var(--u)}
+    .stufen,.personen{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<header><div class="grid">
+  <div class="marke">Kiratio<small>KI-BERATUNG UND UMSETZUNG</small></div>
+  <nav><a href="#">Potenzialanalyse</a><a href="#">Umsetzung</a><a href="#">Förderung</a><a href="#">Über uns</a><a href="#">0931 000000</a></nav>
+</div></header>
+
+<div class="grid">
+  <h1>Wir bringen KI in den mainfränkischen Mittelstand.</h1>
+  <p class="lead">Von der geförderten Potenzialanalyse bis zum laufenden System. Vor Ort, umsetzungsstark, ohne Konzernberater-Overhead.</p>
+  <div class="aktion">
+    <a class="btn" href="#">Erstgespräch vereinbaren</a>
+    <p class="meta">Förderfähig über die BAFA-Beratungsförderung und den Digitalbonus Bayern. Der Einstieg kostet damit effektiv 1.750 €.</p>
+  </div>
+  <div class="regel"></div>
+</div>
+
+<section class="grid">
+  <p class="titel">Kennen Sie das?</p>
+  <div class="inhalt">
+    <p class="problem">Ein größeres Angebot zu schreiben dauert zwei Tage.</p>
+    <p class="problem">Das Wissen steckt in drei Köpfen, zwei gehen bald in Rente.</p>
+    <p class="problem">Das Postfach frisst jeden Vormittag.</p>
+    <p class="problem">Serviceberichte tippt am Ende jemand ein zweites Mal ab.</p>
+  </div>
+</section>
+
+<section class="grid">
+  <p class="titel">In drei Schritten</p>
+  <div class="inhalt stufen">
+    <div class="stufe"><span class="num">01</span><h3>KI-Potenzialanalyse</h3>
+      <p class="preis">3.500 €<small>netto, mit BAFA effektiv 1.750 €</small></p>
+      <p>Zwei bis vier Wochen: Prozessaufnahme vor Ort, Datenlage, drei bis fünf priorisierte Anwendungsfälle, Bericht mit Roadmap.</p></div>
+    <div class="stufe"><span class="num">02</span><h3>Umsetzung</h3>
+      <p class="preis">Festpreis<small>nach der Analyse</small></p>
+      <p>Wir bauen das System selbst und binden es an Ihre Bestandssysteme an. Den Digitalbonus-Antrag bereiten wir mit vor.</p></div>
+    <div class="stufe"><span class="num">03</span><h3>Betrieb</h3>
+      <p class="preis">ab 500 €<small>im Monat, quartalsweise kündbar</small></p>
+      <p>Wartung, Monitoring, Pflege der Modelle, Schulung Ihrer Leute, kleinere Erweiterungen.</p></div>
+  </div>
+</section>
+
+<section class="grid">
+  <p class="titel">Wer das macht</p>
+  <div class="inhalt personen">
+    <div><div class="ph">Foto Platzhalter</div><h4>Vorname Nachname (Platzhalter)</h4><p>Architektur und Frontend. 15 Jahre Softwareprojekte in regulierten Branchen.</p></div>
+    <div><div class="ph">Foto Platzhalter</div><h4>Vorname Nachname (Platzhalter)</h4><p>Backend und Integration. 20 Jahre Java und Spring, Anbindung an ERP-Systeme.</p></div>
+  </div>
+</section>
+
+<div class="grid">
+  <div class="cta">
+    <div><b>0931 000000</b><p>Erstgespräch, eine halbe Stunde, kostet nichts.</p></div>
+    <a class="btn" href="#">Termin vereinbaren</a>
+  </div>
+  <footer>Kiratio (Platzhalter) · Musterstraße 1, 97318 Musterstadt · post@kiratio.de · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></footer>
+</div>
+</body>
+</html>

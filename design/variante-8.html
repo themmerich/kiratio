@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entwurf 8 — Editorial</title>
+<!-- Schriften EB Garamond und Lato: vor dem Livegang selbst hosten, nicht von Google laden (DSGVO). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --anthrazit:#1B2430; --kupfer:#C0713C; --grau:#6B7683; --papier:#FDFBF8; --linie:#DFD9D0; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papier);color:var(--anthrazit);
+       font-family:Lato,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.7}
+  a{transition:color .18s ease,background-color .18s ease}
+  a:focus-visible{outline:2px solid var(--kupfer);outline-offset:3px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 26px}
+  .serif{font-family:"EB Garamond",Georgia,serif}
+  header{border-bottom:3px double var(--anthrazit);padding:20px 0 14px}
+  .kopf{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+  .marke{font-family:"EB Garamond",Georgia,serif;font-size:36px;font-weight:600;letter-spacing:-.5px;line-height:1}
+  .marke small{display:block;font-family:Lato,Arial,sans-serif;font-size:9px;font-weight:700;
+               letter-spacing:3px;color:var(--grau);margin-top:6px}
+  nav a{color:var(--grau);text-decoration:none;margin-left:18px;font-size:14px;letter-spacing:.4px}
+  nav a:hover{color:var(--kupfer)}
+  .zeile{display:flex;justify-content:space-between;font-size:12px;letter-spacing:1.6px;
+         text-transform:uppercase;color:var(--grau);padding:8px 0;border-bottom:1px solid var(--linie)}
+  .aufmacher{display:grid;grid-template-columns:2.1fr 1fr;gap:44px;padding:44px 0;
+             border-bottom:1px solid var(--linie)}
+  h1{font-family:"EB Garamond",Georgia,serif;font-size:clamp(34px,4.6vw,54px);line-height:1.1;
+     font-weight:600;letter-spacing:-.8px;margin:0 0 18px}
+  .vorspann{font-size:20px;line-height:1.6}
+  .vorspann::first-letter{font-family:"EB Garamond",Georgia,serif;float:left;font-size:62px;line-height:.82;
+                          padding:4px 10px 0 0;color:var(--kupfer)}
+  .kasten{border:1px solid var(--linie);background:#fff;padding:22px}
+  .kasten h2{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--grau);margin:0 0 12px}
+  .kasten .preis{font-family:"EB Garamond",Georgia,serif;font-size:38px;line-height:1;margin:0 0 4px}
+  .kasten p{font-size:15px;color:var(--grau);margin:8px 0 0}
+  .btn{display:inline-block;background:var(--anthrazit);color:var(--papier);text-decoration:none;
+       padding:12px 22px;font-size:15px;font-weight:700;letter-spacing:.4px;margin-top:16px}
+  .btn:hover{background:var(--kupfer)}
+  .rubrik{font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:var(--kupfer);
+          font-weight:700;margin:46px 0 16px;border-top:1px solid var(--anthrazit);padding-top:12px}
+  .spalten{columns:2;column-gap:44px;column-rule:1px solid var(--linie)}
+  .spalten p{margin:0 0 16px;break-inside:avoid}
+  .zitat{font-family:"EB Garamond",Georgia,serif;font-size:27px;line-height:1.35;border-left:3px solid var(--kupfer);
+         padding-left:20px;margin:0 0 20px;break-inside:avoid}
+  .stufen{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--linie)}
+  .stufe{padding:22px 24px;border-bottom:1px solid var(--linie)}
+  .stufe+.stufe{border-left:1px solid var(--linie)}
+  .stufe .nr{font-size:11px;letter-spacing:2px;color:var(--kupfer);font-weight:700}
+  .stufe h3{font-family:"EB Garamond",Georgia,serif;font-size:24px;font-weight:600;margin:6px 0 4px}
+  .stufe .p{font-size:15px;color:var(--kupfer);margin:0 0 10px;font-weight:700}
+  .stufe p{font-size:15px;color:var(--grau);margin:0}
+  .personen{display:grid;grid-template-columns:repeat(2,1fr);gap:36px}
+  .ph{width:100%;aspect-ratio:3/2;background:#EDE8E0;color:var(--grau);display:flex;
+      align-items:center;justify-content:center;font-size:12px}
+  .personen h4{font-family:"EB Garamond",Georgia,serif;font-size:22px;font-weight:600;margin:12px 0 0}
+  .personen p{margin:2px 0 0;color:var(--grau);font-size:15px}
+  .schluss{border-top:3px double var(--anthrazit);margin-top:46px;padding:30px 0;
+           display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .schluss b{font-family:"EB Garamond",Georgia,serif;font-size:34px;font-weight:600}
+  footer{color:var(--grau);font-size:13px;padding:0 0 48px;letter-spacing:.3px}
+  footer a{color:var(--grau)}
+  @media(prefers-reduced-motion:reduce){a{transition:none}}
+  @media(max-width:820px){.aufmacher{grid-template-columns:1fr;gap:28px}
+    .spalten{columns:1}.stufen,.personen{grid-template-columns:1fr}
+    .stufe+.stufe{border-left:0}}
+</style>
+</head>
+<body>
+<header><div class="wrap kopf">
+  <div class="marke">Kiratio<small>KI-BERATUNG UND UMSETZUNG</small></div>
+  <nav><a href="#">Potenzialanalyse</a><a href="#">Umsetzung</a><a href="#">Förderung</a><a href="#">Über uns</a><a href="#">Kontakt</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="zeile"><span>Würzburg · Schweinfurt · Kitzingen</span><span>Telefon 0931 000000</span></div>
+
+  <div class="aufmacher">
+    <div>
+      <h1>Wir bringen KI in den mainfränkischen Mittelstand.</h1>
+      <p class="vorspann">Zwei Softwareentwickler aus der Region, die nicht bei der Präsentation aufhören. Wir schauen uns an, wie in Ihrem Betrieb gearbeitet wird, suchen die Stellen, an denen sich KI rechnet, und bauen das System anschließend selbst. Von der geförderten Potenzialanalyse bis zum laufenden Betrieb.</p>
+    </div>
+    <aside class="kasten">
+      <h2>Der Einstieg</h2>
+      <p class="preis">3.500 €</p>
+      <div style="font-size:15px;color:var(--grau)">netto für die KI-Potenzialanalyse</div>
+      <p>Über die BAFA-Beratungsförderung zur Hälfte gefördert, Sie zahlen effektiv 1.750 €. Den Antrag bereiten wir mit vor.</p>
+      <a class="btn" href="#">Erstgespräch vereinbaren</a>
+    </aside>
+  </div>
+
+  <p class="rubrik">Wonach wir zuerst fragen</p>
+  <div class="spalten">
+    <p class="zitat">Wie lange braucht bei Ihnen jemand für ein größeres Angebot, und wie viele schreiben Sie im Jahr?</p>
+    <p class="zitat">Wer weiß, wie die Anlage von damals gebaut wurde, und wie lange ist der noch im Haus?</p>
+    <p class="zitat">Wissen Sie, wer bei Ihnen ChatGPT benutzt und was da hineingeschrieben wird?</p>
+    <p>Aus den Antworten wird in zwei bis vier Wochen eine Liste mit drei bis fünf Anwendungsfällen, sortiert nach Nutzen und Machbarkeit. Was sich rechnet, bauen wir. Was sich nicht rechnet, sagen wir Ihnen genauso.</p>
+    <p>Die häufigsten Fälle in Betrieben Ihrer Größe: Angebote aus umfangreichen Leistungsverzeichnissen vorbereiten, Serviceberichte aus dem Diktat erzeugen, Anlagenwissen auffindbar machen, Rechnungseingang vorsortieren.</p>
+  </div>
+
+  <p class="rubrik">Die drei Schritte</p>
+  <div class="stufen">
+    <div class="stufe"><div class="nr">STUFE 01</div><h3>Potenzialanalyse</h3><div class="p">3.500 € netto</div>
+      <p>Prozessaufnahme vor Ort, Bewertung der Datenlage, priorisierte Anwendungsfälle, Bericht mit Roadmap.</p></div>
+    <div class="stufe"><div class="nr">STUFE 02</div><h3>Umsetzung</h3><div class="p">Festpreis nach der Analyse</div>
+      <p>Wir bauen selbst und binden an Ihre Bestandssysteme an. Den Digitalbonus-Antrag bereiten wir mit vor.</p></div>
+    <div class="stufe"><div class="nr">STUFE 03</div><h3>Betrieb</h3><div class="p">ab 500 € im Monat</div>
+      <p>Wartung, Monitoring, Pflege der Modelle, Schulung Ihrer Leute. Quartalsweise kündbar.</p></div>
+  </div>
+
+  <p class="rubrik">Wer Ihnen gegenübersitzt</p>
+  <div class="personen">
+    <div><div class="ph">Foto Platzhalter</div><h4>Vorname Nachname (Platzhalter)</h4><p>Architektur und Frontend. 15 Jahre Softwareprojekte in regulierten Branchen.</p></div>
+    <div><div class="ph">Foto Platzhalter</div><h4>Vorname Nachname (Platzhalter)</h4><p>Backend und Integration. 20 Jahre Java und Spring, Anbindung an ERP-Systeme.</p></div>
+  </div>
+
+  <div class="schluss">
+    <div><b>0931 000000</b><div style="color:var(--grau);font-size:16px">Erstgespräch, eine halbe Stunde, kostet nichts.</div></div>
+    <a class="btn" style="margin-top:0" href="#">Termin vereinbaren</a>
+  </div>
+  <footer>Kiratio (Platzhalter) · Musterstraße 1, 97318 Musterstadt · post@kiratio.de · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></footer>
+</div>
+</body>
+</html>

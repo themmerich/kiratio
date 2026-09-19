@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entwurf 7 — Bento</title>
+<style>
+  :root{ --anthrazit:#1B2430; --kupfer:#C0713C; --grau:#6B7683; --papier:#F2F0EC; --linie:#E3DFD8; --r:20px; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papier);color:var(--anthrazit);
+       font-family:Inter,"Segoe UI","Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.6}
+  a{transition:color .2s ease,background-color .2s ease,transform .2s ease}
+  a:focus-visible{outline:2px solid var(--kupfer);outline-offset:3px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  header{padding:22px 0}
+  .kopf{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .marke{font-size:24px;font-weight:700;letter-spacing:-.5px}
+  .marke small{display:block;font-size:9px;font-weight:600;letter-spacing:2.6px;color:var(--grau)}
+  nav a{color:var(--anthrazit);text-decoration:none;margin-left:20px;font-size:15px}
+  nav a:hover{color:var(--kupfer)}
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-bottom:16px}
+  .k{background:#fff;border-radius:var(--r);padding:28px;border:1px solid var(--linie)}
+  .k.dunkel{background:var(--anthrazit);color:#fff;border-color:var(--anthrazit)}
+  .k.kupfer{background:var(--kupfer);color:#fff;border-color:var(--kupfer)}
+  .s4{grid-column:span 4} .s3{grid-column:span 3} .s2{grid-column:span 2} .s1{grid-column:span 1}
+  .hero h1{font-size:clamp(30px,4.4vw,48px);line-height:1.12;letter-spacing:-1.4px;font-weight:700;margin:0 0 16px}
+  .hero p{color:#B9C0C8;font-size:19px;max-width:32rem;margin:0 0 26px}
+  .btn{display:inline-block;background:var(--kupfer);color:#fff;text-decoration:none;
+       padding:13px 24px;font-size:16px;font-weight:600;border-radius:999px}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.hell{background:#fff;color:var(--anthrazit)}
+  .zahl{font-size:40px;font-weight:700;letter-spacing:-1.4px;line-height:1;margin:0 0 6px;font-variant-numeric:tabular-nums}
+  .k h2{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--grau);font-weight:600;margin:0 0 14px}
+  .k.dunkel h2,.k.kupfer h2{color:rgba(255,255,255,.72)}
+  .k h3{margin:0 0 6px;font-size:20px}
+  .k p.klein{color:var(--grau);font-size:15px;margin:8px 0 0}
+  .k.dunkel p.klein,.k.kupfer p.klein{color:rgba(255,255,255,.8)}
+  .liste{margin:0;padding:0;list-style:none}
+  .liste li{padding:12px 0;border-bottom:1px solid var(--linie);font-size:18px}
+  .liste li:last-child{border-bottom:0}
+  .ph{width:100%;aspect-ratio:1/1;border-radius:14px;background:#E7E3DC;color:var(--grau);
+      display:flex;align-items:center;justify-content:center;font-size:12px;margin-bottom:14px}
+  .tel{font-size:32px;font-weight:700;letter-spacing:-1px;margin:0}
+  footer{color:var(--grau);font-size:14px;padding:18px 0 48px}
+  footer a{color:var(--grau)}
+  @media(prefers-reduced-motion:reduce){a{transition:none}.btn:hover{transform:none}}
+  @media(max-width:900px){.bento{grid-template-columns:repeat(2,1fr)}
+    .s4,.s3{grid-column:span 2}.s2{grid-column:span 2}.s1{grid-column:span 1}}
+  @media(max-width:560px){.bento{grid-template-columns:1fr}
+    .s4,.s3,.s2,.s1{grid-column:span 1}}
+</style>
+</head>
+<body>
+<header><div class="wrap kopf">
+  <div class="marke">Kiratio<small>KI-BERATUNG UND UMSETZUNG</small></div>
+  <nav><a href="#">Potenzialanalyse</a><a href="#">Umsetzung</a><a href="#">Förderung</a><a href="#">Über uns</a><a href="#">0931 000000</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="bento">
+    <div class="k dunkel s3 hero">
+      <h1>Wir bringen KI in den mainfränkischen Mittelstand.</h1>
+      <p>Von der geförderten Potenzialanalyse bis zum laufenden System. Vor Ort, umsetzungsstark, ohne Konzernberater-Overhead.</p>
+      <a class="btn" href="#">Erstgespräch vereinbaren</a>
+    </div>
+    <div class="k kupfer s1">
+      <h2>Einstieg</h2>
+      <p class="zahl">3.500 €</p>
+      <p class="klein">netto für die Potenzialanalyse. Mit BAFA-Zuschuss zahlen Sie effektiv 1.750 €.</p>
+    </div>
+
+    <div class="k s2">
+      <h2>Kennen Sie das?</h2>
+      <ul class="liste">
+        <li>Ein größeres Angebot zu schreiben dauert zwei Tage.</li>
+        <li>Das Wissen steckt in drei Köpfen, zwei gehen bald in Rente.</li>
+        <li>Das Postfach frisst jeden Vormittag.</li>
+      </ul>
+    </div>
+    <div class="k s1"><h2>Stufe 01</h2><h3>Potenzialanalyse</h3>
+      <p class="klein">Zwei bis vier Wochen: Prozessaufnahme vor Ort, Datenlage, drei bis fünf priorisierte Anwendungsfälle, Bericht mit Roadmap.</p></div>
+    <div class="k s1"><h2>Stufe 02</h2><h3>Umsetzung</h3>
+      <p class="klein">Wir bauen das System selbst und binden es an Ihre Bestandssysteme an. Festpreis nach der Analyse, Digitalbonus-Antrag vorbereitet.</p></div>
+
+    <div class="k s1"><h2>Stufe 03</h2><h3>Betrieb</h3>
+      <p class="klein">Wartung, Monitoring, Pflege der Modelle, Schulung. Ab 500 € im Monat, quartalsweise kündbar.</p></div>
+    <div class="k s1"><div class="ph">Foto Platzhalter</div>
+      <h3>Vorname Nachname</h3><p class="klein">(Platzhalter) Architektur und Frontend, 15 Jahre in regulierten Branchen.</p></div>
+    <div class="k s1"><div class="ph">Foto Platzhalter</div>
+      <h3>Vorname Nachname</h3><p class="klein">(Platzhalter) Backend und Integration, 20 Jahre Java und Spring.</p></div>
+    <div class="k s1"><h2>Förderung</h2>
+      <p class="zahl">50 %</p>
+      <p class="klein">Zuschuss über die BAFA-Beratungsförderung. Den Antrag bereiten wir mit vor.</p></div>
+
+    <div class="k dunkel s4" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+      <div><p class="tel">0931 000000</p><p class="klein">Erstgespräch, eine halbe Stunde, kostet nichts.</p></div>
+      <a class="btn hell" href="#">Termin vereinbaren</a>
+    </div>
+  </div>
+  <footer>Kiratio (Platzhalter) · Musterstraße 1, 97318 Musterstadt · post@kiratio.de · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></footer>
+</div>
+</body>
+</html>

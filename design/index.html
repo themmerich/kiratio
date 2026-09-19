@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiratio — acht Entwürfe zur Auswahl</title>
+<style>
+  :root{ --anthrazit:#1B2430; --kupfer:#C0713C; --grau:#6B7683; --papier:#F5F3EF; --linie:#DDD8D0; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papier);color:var(--anthrazit);
+       font-family:Inter,"Segoe UI","Helvetica Neue",Arial,sans-serif;line-height:1.65}
+  .wrap{max-width:900px;margin:0 auto;padding:40px 26px 60px}
+  h1{font-size:30px;letter-spacing:-.6px;margin:0 0 8px}
+  h2.gruppe{font-size:13px;letter-spacing:2.2px;text-transform:uppercase;color:var(--grau);
+            margin:38px 0 14px;border-top:1px solid var(--linie);padding-top:14px}
+  .hinweis{background:#FDF3E7;border-left:3px solid var(--kupfer);padding:12px 16px;font-size:15px;margin:20px 0 10px}
+  .karte{display:block;background:#fff;border:1px solid var(--linie);padding:22px 24px;margin-bottom:14px;
+         text-decoration:none;color:inherit;transition:border-color .18s ease}
+  .karte:hover{border-color:var(--kupfer)}
+  .karte h3{margin:0 0 6px;font-size:21px}
+  .karte h3 span{color:var(--kupfer);font-size:13px;letter-spacing:2px;display:block;margin-bottom:4px}
+  .karte p{margin:0 0 8px;color:#39424F;font-size:16px}
+  .karte .fuer{font-size:14px;color:var(--grau)}
+  .quelle{font-size:13px;color:var(--grau);margin-top:6px;font-style:italic}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Acht Entwürfe für die Startseite</h1>
+  <p style="color:var(--grau);margin:0">Gleicher Inhalt, dieselbe Palette aus den Logoentwürfen, acht verschiedene Handschriften. Alle Namen, Fotos, Telefonnummern und Anschriften sind Platzhalter.</p>
+  <div class="hinweis">Beim Durchsehen hilft eine Frage: Würde ein Geschäftsführer mit 40 Mitarbeitern hier anrufen?</div>
+
+  <h2 class="gruppe">Erste Runde — aus der Zielgruppe heraus entworfen</h2>
+
+  <a class="karte" href="variante-1.html">
+    <h3><span>ENTWURF 1</span>Datenblatt</h3>
+    <p>Schmale Spalte, keine Kacheln, nur Linien. Preise rechtsbündig wie in einem Angebot.</p>
+    <p class="fuer">Wirkt sachlich und prüfbar. Risiko: könnte als spröde gelesen werden.</p>
+  </a>
+
+  <a class="karte" href="variante-2.html">
+    <h3><span>ENTWURF 2</span>Dunkler Kopf</h3>
+    <p>Anthrazitfarbener Kopfbereich über die volle Breite, darunter drei Karten für die Leiter.</p>
+    <p class="fuer">Wirkt etabliert. Risiko: austauschbar, viele Mittelstandsseiten sehen so aus.</p>
+  </a>
+
+  <a class="karte" href="variante-3.html">
+    <h3><span>ENTWURF 3</span>Raster</h3>
+    <p>Sichtbares Gitter aus Linien, Stufen durchnummeriert, Zahlen und Navigation in Monospace.</p>
+    <p class="fuer">Wirkt technisch kompetent und merkfähig. Risiko: für manche Betriebe zu ungewöhnlich.</p>
+  </a>
+
+  <a class="karte" href="variante-4.html">
+    <h3><span>ENTWURF 4</span>Anschreiben</h3>
+    <p>Eine Spalte Fließtext in einer Serifenschrift, die Seite liest sich wie ein persönlicher Brief.</p>
+    <p class="fuer">Wirkt persönlich, zwei Menschen statt Marke. Risiko: bricht mit der Inter-Festlegung.</p>
+  </a>
+
+  <h2 class="gruppe">Zweite Runde — aus der UI-Datenbank abgeleitet</h2>
+
+  <a class="karte" href="variante-5.html">
+    <h3><span>ENTWURF 5</span>Swiss Modernism</h3>
+    <p>Striktes Zwölf-Spalten-Raster, 8-Pixel-Basiseinheit, asymmetrisch gesetzte Überschrift, genau ein Akzentton. Viel Luft, große Typografie, keine Dekoration.</p>
+    <p class="fuer">Wirkt souverän und aufgeräumt. Risiko: braucht gute Fotos, sonst wirkt die Fläche leer.</p>
+    <p class="quelle">Quelle: styles.csv, „Swiss Modernism 2.0" — empfohlen unter anderem für professional services.</p>
+  </a>
+
+  <a class="karte" href="variante-6.html">
+    <h3><span>ENTWURF 6</span>Trust und Authority</h3>
+    <p>Das Muster, das die Datenbank für diese Branche zuerst vorschlägt: Aussage, direkt darunter ein Band mit Belegen, dann drei Preisblöcke mit hervorgehobenem Einstieg, dann die Personen. Schrift IBM Plex Sans.</p>
+    <p class="fuer">Wirkt am ehesten nach etabliertem Anbieter und ist am stärksten auf Abschluss gebaut. Risiko: das Belegband braucht echte Zahlen, sonst klingt es hohl.</p>
+    <p class="quelle">Quelle: landing.csv „Trust &amp; Authority + Conversion", typography.csv „Financial Trust".</p>
+  </a>
+
+  <a class="karte" href="variante-7.html">
+    <h3><span>ENTWURF 7</span>Bento</h3>
+    <p>Kacheln in verschiedenen Größen, runde Ecken, der Preis als eigene farbige Kachel. Die modernste der acht Varianten.</p>
+    <p class="fuer">Wirkt aktuell und macht die Seite auf dem Handy angenehm. Risiko: bei sehr traditionellen Betrieben zu verspielt.</p>
+    <p class="quelle">Quelle: styles.csv, „Bento Grids".</p>
+  </a>
+
+  <a class="karte" href="variante-8.html">
+    <h3><span>ENTWURF 8</span>Editorial</h3>
+    <p>Zeitungsanmutung: doppelte Trennlinien, Initiale im Vorspann, zweispaltiger Text, Rubriken. Schriften EB Garamond und Lato.</p>
+    <p class="fuer">Wirkt eigenständig und seriös, ohne kalt zu sein. Risiko: die Mehrspaltigkeit will beim Texten gepflegt werden.</p>
+    <p class="quelle">Quelle: styles.csv „Editorial Grid / Magazine", typography.csv „Legal Professional".</p>
+  </a>
+
+  <div class="hinweis" style="margin-top:28px">Entwurf 6 und 8 laden ihre Schriften zum Ansehen von Google. Vor einem Livegang müssten sie selbst gehostet werden, sonst bräuchte die Seite einen Cookie-Hinweis.</div>
+</div>
+</body>
+</html>
