@@ -1,0 +1,7 @@
+# Die Lock-Datei .terraform.lock.hcl gehört bewusst ins Repository,
+# damit alle mit denselben Provider-Versionen arbeiten.
+.terraform/
+terraform.tfvars
+*.tfstate
+*.tfstate.*
+crash.log

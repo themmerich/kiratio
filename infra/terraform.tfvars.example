@@ -1,0 +1,10 @@
+# Kopie als terraform.tfvars anlegen und anpassen. Die Vorgabewerte in
+# variables.tf passen bereits, solange Domain und Repository stimmen.
+
+# domain            = "kiratio.de"
+# region            = "eu-central-1"
+# github_repository = "themmerich/kiratio"
+
+# Auf false setzen, falls im AWS-Konto schon ein GitHub-OIDC-Provider liegt.
+# Pro Konto ist nur einer erlaubt, ein zweiter Apply schlägt sonst fehl.
+# create_oidc_provider = false
