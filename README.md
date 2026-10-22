@@ -16,7 +16,7 @@ favicon.svg             Zeichen als Kachel, gefüllt, für kleine Größen
 index.html              Startseite
 potenzialanalyse.html   Ablauf und Umfang der Analyse
 umsetzung.html          Umsetzung, Integration und Betrieb
-foerderung.html         BAFA, Digitalbonus Bayern, KfW
+foerderung.html         Digitalbonus Bayern, KfW
 ueber-uns.html          die beiden Personen hinter Kiratio
 kontakt.html            Erstgespräch und Anfahrt
 impressum.html
