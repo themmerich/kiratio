@@ -28,6 +28,19 @@ variable "deploy_branch" {
   default     = "main"
 }
 
+# Die numerischen IDs stehen in `gh api repos/<owner>/<name> --jq '.id, .owner.id'`.
+variable "github_owner_id" {
+  description = "Numerische ID des GitHub-Kontos, für die ID-basierte Form des sub-Claims."
+  type        = string
+  default     = "3725151"
+}
+
+variable "github_repository_id" {
+  description = "Numerische ID des Repositorys, für die ID-basierte Form des sub-Claims."
+  type        = string
+  default     = "1375811331"
+}
+
 variable "create_oidc_provider" {
   description = "Auf false setzen, wenn der GitHub-OIDC-Provider im Konto schon existiert."
   type        = bool
