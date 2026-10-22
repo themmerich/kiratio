@@ -2,7 +2,7 @@
 
 Website für Kiratio, eine KI-Beratung für kleine und mittlere Unternehmen in Mainfranken. Die Seite stellt das Angebot in drei Stufen dar (Potenzialanalyse, Umsetzung, Betrieb) und erklärt die dazugehörigen Förderprogramme.
 
-Namen, Telefonnummer und Mailadresse stehen und stammen von der Visitenkarte (`04 Firma/Visitenkarte/` im Vault). Offen sind noch die Fotos der beiden, eine ladungsfähige Anschrift sowie Impressum und Datenschutzerklärung; diese beiden Seiten tragen dafür weiterhin ein Banner am Seitenkopf.
+Namen, Telefonnummer und Mailadresse stehen und stammen von der Visitenkarte (`04 Firma/Visitenkarte/` im Vault). Die Anschrift steht seit dem 22.10.2026 im Impressum. Impressum und Datenschutzerklärung sind ausformuliert, Rechtsträger ist die Kiratio GbR. Offen sind noch die Fotos der beiden.
 
 ## Aufbau
 
@@ -75,10 +75,12 @@ Diese Punkte sind offen und im Quelltext als Kommentar markiert:
 
 - Fotos der beiden einsetzen. Solange keine da sind, zeigen die Kacheln auf Startseite und
   „Über uns" die Initialen, im Quelltext steht an jeder Stelle ein Kommentar.
-- Eine ladungsfähige Anschrift festlegen. Die Visitenkarte führt bewusst keine, deshalb steht
-  auch auf der Seite keine, außer der Musteradresse im Impressum.
-- Impressum und Datenschutz sind nur ein Gerüst und gehören vor dem Livegang in fachkundige
-  Hände. Beide Seiten tragen dazu oben ein `div.platzhalter`, das dann wegfällt.
+- Die Anschrift steht im Impressum und auf der Datenschutzseite: Bühlstr. 16, 97506
+  Grafenrheinfeld. Kontaktseite und Fuß führen bewusst keine, so wie die Visitenkarte.
+- Impressum und Datenschutzerklärung sind ausformuliert, aber nicht anwaltlich geprüft. Was sie
+  an Annahmen treffen und was noch zu klären ist, steht als Kommentar am Anfang der jeweiligen
+  Datei. Im Impressum fehlen bewusst zwei Abschnitte: Registereintrag und Umsatzsteuer-
+  Identifikationsnummer gibt es erst, wenn es sie gibt.
 - Die Zahlen im Belegband der Startseite belegen oder streichen, besonders den Anfahrtsradius von 45 km.
 - Im Logo ist die Schrift noch echter Text, keine Pfade. Wer kein Inter installiert hat,
   sieht die Wortmarke in Segoe UI oder Arial; die Breite bleibt gleich, weil `textLength`
