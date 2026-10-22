@@ -9,8 +9,17 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
-<div class="platzhalter">Gerüst, keine fertigen Rechtstexte. Vor dem Livegang von jemandem prüfen lassen, der das darf.</div>
-
+<!-- Am 22.10.2026 ausformuliert, Angaben aus der eigenen Infrastruktur:
+     CloudFront-Standardprotokollierung und S3-Zugriffsprotokollierung sind aus,
+     das Web-ACL hat sampled_requests_enabled, PriceClass_100 schließt Nordamerika ein.
+     Noch zu klären: ob der Vertrag zur Auftragsverarbeitung für dieses AWS-Konto
+     dokumentiert vorliegt; ob AWS im EU-US Data Privacy Framework gelistet ist, dann
+     wäre neben den Standardvertragsklauseln auch ein Angemessenheitsbeschluss nennbar;
+     die Hausnummer des BayLDA gegen lda.bayern.de prüfen, ältere Quellen nennen die 27.
+     Anwaltlich geprüft ist der Text nicht.
+     Sobald ein Formular, eine Kartenansicht, eine Terminbuchung oder eine Schrift von
+     einem fremden Server dazukommt, ändert sich dieser Text und womöglich auch die
+     Frage nach der Einwilligung. -->
 <header><div class="wrap kopf">
   <a class="marke" href="index.html"><img src="kiratio-logo.svg" width="352" height="104" alt="Kiratio — KI mit Verstand"></a>
   <nav>
@@ -31,25 +40,31 @@
 <section class="wrap">
   <div class="fliess">
     <h3>Verantwortlicher</h3>
-    <p>Kiratio, Thomas Hemmerich und Christian Hartmann, Musterstraße 1, 97318 Musterstadt (Anschrift Platzhalter), info@kiratio.de. Vollständige Angaben im <a href="impressum.html">Impressum</a>.</p>
+    <p>Kiratio GbR, Thomas Hemmerich und Christian Hartmann, Bühlstr. 16, 97506 Grafenrheinfeld, info@kiratio.de. Vollständige Angaben im <a href="impressum.html">Impressum</a>.</p>
 
-    <h3>Zugriffsdaten</h3>
-    <p>Platzhalter: Beschreibung der Server-Logdateien, die der Hoster erhebt (IP-Adresse, Zeitpunkt, abgerufene Datei, Browser), Zweck, Rechtsgrundlage nach Art. 6 Abs. 1 lit. f DSGVO und Speicherdauer. Die konkreten Angaben liefert der Hoster.</p>
+    <h3>Zugriff auf die Seite</h3>
+    <p>Damit Ihr Browser diese Seite anzeigen kann, übermittelt er technisch notwendige Angaben an den ausliefernden Server: Ihre IP-Adresse, Zeitpunkt und Pfad des Abrufs, die Browserkennung und, falls vorhanden, die zuvor besuchte Seite. Ohne diese Angaben lässt sich keine Antwort zustellen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO, unser berechtigtes Interesse ist der Betrieb der Seite.</p>
+    <p>Protokolldateien führen wir nicht. Weder im Auslieferungsnetz noch im Speicher ist eine Zugriffsprotokollierung eingeschaltet. Die Angaben werden also für die Dauer der Anfrage verarbeitet und danach nicht aufbewahrt.</p>
 
-    <h3>Auftragsverarbeitung</h3>
-    <p>Platzhalter: Name des Hosters und Hinweis auf den Vertrag zur Auftragsverarbeitung.</p>
+    <h3>Schutz vor Überlastung</h3>
+    <p>Vor der Seite steht eine Firewall, die einzelne IP-Adressen bremst, sobald sie innerhalb von fünf Minuten auffällig viele Anfragen stellen. Löst eine Anfrage diese Regel aus, hält unser Dienstleister sie als Stichprobe bis zu drei Stunden vor, einschließlich der IP-Adresse, und löscht sie danach. Daneben entstehen reine Zählwerte ohne Personenbezug, etwa die Anzahl blockierter Anfragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO, unser berechtigtes Interesse sind die Verfügbarkeit der Seite und die Abwehr missbräuchlicher Zugriffe.</p>
+
+    <h3>Hosting und Auftragsverarbeitung</h3>
+    <p>Die Seite liegt bei der Amazon Web Services EMEA SARL mit Sitz in Luxemburg, mit der ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO besteht. Die Dateien werden in Frankfurt am Main gespeichert. Ausgeliefert werden sie über ein Netz von Standorten in Europa und Nordamerika: Je nachdem, von wo Sie die Seite abrufen, kann die Auslieferung über einen Standort in den Vereinigten Staaten laufen. Für solche Übermittlungen enthält der Vertrag die Standardvertragsklauseln der Europäischen Kommission nach Art. 46 DSGVO.</p>
 
     <h3>Kontaktaufnahme</h3>
     <p>Wenn Sie uns anrufen oder schreiben, verarbeiten wir Ihre Angaben zur Bearbeitung der Anfrage und zur Anbahnung eines Vertrags, Art. 6 Abs. 1 lit. b DSGVO. Wir speichern sie, solange die Anfrage bearbeitet wird, und darüber hinaus nur, soweit gesetzliche Aufbewahrungsfristen es verlangen.</p>
 
     <h3>Keine Cookies, kein Tracking</h3>
-    <p>Diese Seite setzt keine Cookies, die eine Einwilligung erfordern, und bindet keine Schriften, Karten, Videos oder Skripte von fremden Servern ein.</p>
+    <p>Diese Seite setzt keine Cookies, die eine Einwilligung erfordern, und bindet keine Schriften, Karten, Videos oder Skripte von fremden Servern ein. Es gibt keine Reichweitenmessung und kein Kontaktformular.</p>
 
     <h3>Ihre Rechte</h3>
-    <p>Platzhalter: Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch, Beschwerde bei einer Aufsichtsbehörde, jeweils mit Fundstelle. Für Bayern ist das Bayerische Landesamt für Datenschutzaufsicht zuständig.</p>
-  </div>
+    <p>Sie können Auskunft über die zu Ihnen gespeicherten Daten verlangen (Art. 15 DSGVO), ihre Berichtigung (Art. 16), ihre Löschung (Art. 17) oder die Einschränkung der Verarbeitung (Art. 18). Sie haben das Recht auf Datenübertragbarkeit (Art. 20) und können einer Verarbeitung widersprechen, die auf unserem berechtigten Interesse beruht (Art. 21). Schreiben Sie uns dafür an <a href="mailto:info@kiratio.de">info@kiratio.de</a>.</p>
+    <p>Unabhängig davon können Sie sich bei einer Aufsichtsbehörde beschweren (Art. 77 DSGVO). Für uns zuständig ist das Bayerische Landesamt für Datenschutzaufsicht, Promenade 18, 91522 Ansbach.</p>
 
-  <p class="hinweis">Vor dem Livegang zu klären: Hoster und Vertrag zur Auftragsverarbeitung, Speicherdauer der Logdateien. Sobald doch ein Formular, eine Kartenansicht, eine Terminbuchung oder eine Schriftart von einem fremden Server dazukommt, ändert sich dieser Text und möglicherweise auch die Frage nach der Einwilligung.</p>
+    <h3>Stand</h3>
+    <p>Diese Erklärung gilt seit dem 22. Oktober 2026. Ändert sich etwas an der Seite, ändert sie sich mit.</p>
+  </div>
 </section>
 </main>
 
