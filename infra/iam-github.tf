@@ -14,6 +14,9 @@ resource "aws_iam_openid_connect_provider" "github" {
 
 locals {
   oidc_provider_arn = var.create_oidc_provider ? one(aws_iam_openid_connect_provider.github[*].arn) : "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/token.actions.githubusercontent.com"
+
+  github_owner     = split("/", var.github_repository)[0]
+  github_repo_name = split("/", var.github_repository)[1]
 }
 
 data "aws_iam_policy_document" "deploy_assume" {
@@ -33,10 +36,19 @@ data "aws_iam_policy_document" "deploy_assume" {
 
     # Nur dieses Repository und nur dieser Branch. Ein Pull Request aus einem
     # Fork bekommt die Rolle damit nicht.
+    #
+    # Zwei Schreibweisen, weil GitHub den sub-Claim auf eine Form umstellt, die
+    # zusätzlich die numerischen IDs von Konto und Repository trägt. Die hängen
+    # nicht am Namen und überleben damit eine Umbenennung. Welche Form ein Lauf
+    # schickt, entscheidet GitHub; wer nur die Namensform einträgt, bekommt ein
+    # "Not authorized to perform sts:AssumeRoleWithWebIdentity".
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${var.github_repository}:ref:refs/heads/${var.deploy_branch}"]
+      values = [
+        "repo:${var.github_repository}:ref:refs/heads/${var.deploy_branch}",
+        "repo:${local.github_owner}@${var.github_owner_id}/${local.github_repo_name}@${var.github_repository_id}:ref:refs/heads/${var.deploy_branch}",
+      ]
     }
   }
 }
