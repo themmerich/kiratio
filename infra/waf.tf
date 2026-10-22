@@ -4,8 +4,9 @@
 resource "aws_wafv2_web_acl" "site" {
   provider = aws.us_east_1
 
-  name        = "${var.project}-site"
-  description = "Grundschutz für die Kiratio-Website."
+  name = "${var.project}-site"
+  # WAFv2 lässt im Beschreibungsfeld nur ASCII zu, Umlaute werden abgelehnt.
+  description = "Grundschutz der Kiratio-Website."
   scope       = "CLOUDFRONT"
 
   default_action {
