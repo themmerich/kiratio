@@ -2,13 +2,17 @@
 
 Website für Kiratio, eine KI-Beratung für kleine und mittlere Unternehmen in Mainfranken. Die Seite stellt das Angebot in drei Stufen dar (Potenzialanalyse, Umsetzung, Betrieb) und erklärt die dazugehörigen Förderprogramme.
 
-Der Stand ist eine Entwurfsfassung. Namen, Fotos, Telefonnummer und Anschrift sind Platzhalter, sichtbar über ein Banner am Seitenkopf.
+Namen, Telefonnummer und Mailadresse stehen und stammen von der Visitenkarte (`04 Firma/Visitenkarte/` im Vault). Offen sind noch die Fotos der beiden, eine ladungsfähige Anschrift sowie Impressum und Datenschutzerklärung; diese beiden Seiten tragen dafür weiterhin ein Banner am Seitenkopf.
 
 ## Aufbau
 
 Eine statische Website aus reinem HTML und einer Stylesheet-Datei. Kein Build-Schritt, kein JavaScript, keine Formulare, keine Abhängigkeiten. Die Dateien lassen sich so ausliefern, wie sie im Repository liegen.
 
 ```
+kiratio-logo.svg        Wortmarke mit Zeichen und Claim, im Seitenkopf
+kiratio-logo-hell.svg   dieselbe Wortmarke umgekehrt, im Fuß auf Anthrazit
+kiratio-zeichen.svg     Zeichen allein
+favicon.svg             Zeichen als Kachel, gefüllt, für kleine Größen
 index.html              Startseite
 potenzialanalyse.html   Ablauf und Umfang der Analyse
 umsetzung.html          Umsetzung, Integration und Betrieb
@@ -43,11 +47,23 @@ Die Seiten funktionieren auch beim direkten Öffnen aus dem Dateisystem, weil al
 Farben und Abstände stehen als CSS-Variablen am Anfang von `styles.css` und werden nirgends sonst festgelegt:
 
 ```css
---anthrazit: #1B2430;   --kupfer:  #C0713C;
---grau:      #6B7683;   --text:    #39424F;
---papier:    #F7F5F2;   --linie:   #E1DCD4;
+--anthrazit: #1B2430;   --kupfer:  #C0713C;   /* die vier Logofarben */
+--grau:      #6B7683;   --papier:  #F5F3EF;
+
+--kupfer-dunkel: #A85F30;   --text:        #39424F;   /* daraus abgeleitet */
+--linie:         #E1DCD4;   --papier-grau: #AEB6BF;
+
 --rand:      28px;      --block:   48px;
 ```
+
+Mehr als diese vier Farben hat die Marke nicht. Die vier darunter sind Aufhellungen
+oder Abdunklungen davon, für Fließtext, Trennlinien und Hover. `--papier` liegt
+doppelt im Einsatz: als Fläche auf Weiß und als Schriftfarbe auf Anthrazit.
+
+Das Logo liegt viermal im Repository (siehe Dateiliste oben). Die Wortmarke steht im
+Seitenkopf, im Fuß dieselbe Datei umgekehrt auf Anthrazit. Gegenüber dem Original aus
+`04 Firma/Logo/` im Vault ist nur der Rand beschnitten (`viewBox="20 28 352 104"`
+statt `0 0 640 160`), damit die Marke im Kopf nicht halb aus Leerraum besteht.
 
 `.wrap` setzt nur den seitlichen Rand. Vertikale Abstände kommen aus Regeln mit höherer Spezifität wie `section.wrap` oder `.wrap.hero`, damit sie den seitlichen Rand nicht überschreiben. Wer Abstände ändert, sollte diese Trennung beibehalten.
 
@@ -57,8 +73,16 @@ Als Schrift ist Inter vorgesehen, allerdings nur als erste Wahl im Schriftstapel
 
 Diese Punkte sind offen und im Quelltext als Kommentar markiert:
 
-- Die Platzhalter ersetzen: Namen, Fotos, Telefonnummer, Anschrift, Impressum und Datenschutzerklärung. Jede Seite trägt dazu oben ein `div.platzhalter`, das dann wegfällt. Impressum und Datenschutz sind nur ein Gerüst und gehören vor dem Livegang in fachkundige Hände.
+- Fotos der beiden einsetzen. Solange keine da sind, zeigen die Kacheln auf Startseite und
+  „Über uns" die Initialen, im Quelltext steht an jeder Stelle ein Kommentar.
+- Eine ladungsfähige Anschrift festlegen. Die Visitenkarte führt bewusst keine, deshalb steht
+  auch auf der Seite keine, außer der Musteradresse im Impressum.
+- Impressum und Datenschutz sind nur ein Gerüst und gehören vor dem Livegang in fachkundige
+  Hände. Beide Seiten tragen dazu oben ein `div.platzhalter`, das dann wegfällt.
 - Die Zahlen im Belegband der Startseite belegen oder streichen, besonders den Anfahrtsradius von 45 km.
+- Im Logo ist die Schrift noch echter Text, keine Pfade. Wer kein Inter installiert hat,
+  sieht die Wortmarke in Segoe UI oder Arial; die Breite bleibt gleich, weil `textLength`
+  gesetzt ist. Vor dem Livegang in Pfade umwandeln, dann stimmt das Bild überall.
 - Die Entwürfe 6 und 8 in `design/` laden ihre Schriften von Google. Wird einer davon zur Grundlage, müssen die Schriften selbst gehostet werden, sonst braucht die Seite einen Cookie-Hinweis. Die ausgelieferten Seiten selbst laden nichts von fremden Servern.
 
 ## Hosting und Deployment
