@@ -20,6 +20,7 @@ beratung.html           Beratung, EU AI Act, die drei Beratungsformate
 coaching.html           Schulung und Begleitung, KI-Kompetenz nach Artikel 4 AI Act
 ki-automatisierung.html wiederkehrende Abläufe automatisieren
 individualsoftware.html eigene Software, wenn kein Produkt passt
+eu-ai-act.html           EU AI Act: Fristen, Risikoklassen, Pflichten für Betreiber
 foerderung.html         Digitalbonus Bayern, KfW
 ueber-uns.html          die beiden Personen hinter Kiratio
 kontakt.html            Erstgespräch und Anfahrt
@@ -57,7 +58,7 @@ Farben und Abstände stehen als CSS-Variablen am Anfang von `styles.css` und wer
 --kupfer-dunkel: #A85F30;   --text:        #39424F;   /* daraus abgeleitet */
 --linie:         #E1DCD4;   --papier-grau: #AEB6BF;
 
---rand:      28px;      --block:   48px;
+--rand:      clamp(22px,4vw,44px);   --block: 48px;   --mass: 40rem;
 ```
 
 Mehr als diese vier Farben hat die Marke nicht. Die vier darunter sind Aufhellungen
@@ -69,7 +70,9 @@ Seitenkopf, im Fuß dieselbe Datei umgekehrt auf Anthrazit. Gegenüber dem Origi
 `04 Firma/Logo/` im Vault ist nur der Rand beschnitten (`viewBox="20 28 352 104"`
 statt `0 0 640 160`), damit die Marke im Kopf nicht halb aus Leerraum besteht.
 
-`.wrap` setzt nur den seitlichen Rand. Vertikale Abstände kommen aus Regeln mit höherer Spezifität wie `section.wrap` oder `.wrap.hero`, damit sie den seitlichen Rand nicht überschreiben. Wer Abstände ändert, sollte diese Trennung beibehalten.
+`.wrap` setzt nur den seitlichen Rand. Vertikale Abstände kommen aus Regeln mit höherer Spezifität wie `section.wrap` oder `.auftakt-in`, damit sie den seitlichen Rand nicht überschreiben. Wer Abstände ändert, sollte diese Trennung beibehalten.
+
+`--mass` ist die gemeinsame Zeilenbreite von Fließtext und der Überschrift darüber. Ohne sie lief die Überschrift über die volle Containerbreite, während der Text schon bei knapp 600 Pixeln umbrach; die Kante dazwischen las sich als nach links verschoben. Raster, Bänder und Karten bleiben davon unberührt und nutzen die volle Breite. `--rand` wächst mit dem Fenster, damit der Inhalt bei Fensterbreiten knapp über der Containerbreite nicht am Rand klebt. Der Container (`.wrap`) ist 1200 Pixel breit; auf breiten Schirmen bleibt die Textspalte im zweispaltigen Satz damit bei rund 640 Pixeln, also etwa 75 Zeichen je Zeile. Wo ein Textabschnitt die Breite füllen soll, trägt die Section zusätzlich `gespalten`: Rubrik und Überschrift links, Fließtext rechts, auf schmalen Fenstern untereinander.
 
 Seit dem Umbau auf Entwurf 11 beginnt jede Seite mit einer anthrazitfarbenen Fläche (`.auftakt`), in der Logo, Navigation und Überschrift hell stehen; im Kopf liegt dort `kiratio-logo-hell.svg`. Der Kopf klebt nicht mehr beim Scrollen, weil er in dieser Fläche sitzt. Auf der Startseite schieben sich die vier Leistungskarten mit einem negativen Außenabstand hinein, deshalb ist die Fläche dort tiefer. Die Unterseiten tragen zusätzlich `.auftakt.seite` und haben entsprechend weniger Abstand nach unten. Die Regeln stehen am Ende von `styles.css`.
 
@@ -87,6 +90,9 @@ Diese Punkte sind offen und im Quelltext als Kommentar markiert:
   an Annahmen treffen und was noch zu klären ist, steht als Kommentar am Anfang der jeweiligen
   Datei. Im Impressum fehlen bewusst zwei Abschnitte: Registereintrag und Umsatzsteuer-
   Identifikationsnummer gibt es erst, wenn es sie gibt.
+- `eu-ai-act.html` nennt Fristen, Artikel und zwei Verordnungsnummern und trägt unten ein
+  Stand-Datum. Wer dort etwas ändert, zieht das Datum mit. Eine veraltete Fristenseite ist
+  schlechter als keine. Belegt sind die Angaben über EUR-Lex, verlinkt am Seitenende.
 - Die Zahlen im Belegband der Startseite belegen oder streichen, besonders den Anfahrtsradius von 45 km.
 - Im Logo ist die Schrift noch echter Text, keine Pfade. Wer kein Inter installiert hat,
   sieht die Wortmarke in Segoe UI oder Arial; die Breite bleibt gleich, weil `textLength`

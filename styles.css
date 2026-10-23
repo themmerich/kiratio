@@ -24,7 +24,8 @@
   --papier-grau:#AEB6BF;    /* Grau aufgehellt, für Text auf Anthrazit */
   --weiss:#FFFFFF;
 
-  --rand:28px;      /* seitlicher Rand */
+  --rand:clamp(22px,4vw,44px);  /* seitlicher Rand, wächst mit dem Fenster */
+  --mass:40rem;     /* gemeinsame Zeilenbreite für Fließtext und seine Überschrift */
   --block:48px;     /* vertikaler Abstand je Abschnitt */
 }
 
@@ -44,7 +45,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--kupfer);outline-off
 @media (prefers-reduced-motion:reduce){a{transition:none}}
 
 /* Behälter: nur seitlicher Rand */
-.wrap{max-width:1080px;margin:0 auto;padding:0 var(--rand)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 var(--rand)}
 
 /* Kopf */
 header{border-bottom:1px solid var(--linie);position:sticky;top:0;background:rgba(255,255,255,.96);z-index:10}
@@ -76,10 +77,14 @@ h1{font-size:44px;line-height:1.15;font-weight:700;letter-spacing:-1.2px;margin:
 h2{font-size:28px;letter-spacing:-.6px;margin:0 0 10px}
 h3{font-size:19px;margin:0 0 6px}
 .lead{font-size:20px;color:var(--text);margin:0 0 28px}
-.sub{color:var(--grau);margin:0 0 30px;max-width:40rem}
+.sub{color:var(--grau);margin:0 0 30px;max-width:var(--mass)}
+
+/* Überschrift und Fließtext darunter enden an derselben Kante. Raster, Bänder
+   und Karten bleiben voll breit, nur der Lesetext bekommt sein Maß. */
+section.wrap > h2,.risiko > .wrap > h2,.abschluss h2{max-width:var(--mass)}
 
 /* Fließtext */
-.fliess{max-width:38rem}
+.fliess{max-width:var(--mass)}
 .fliess p{color:var(--text);margin:0 0 18px}
 .fliess p:last-child{margin-bottom:0}
 .fliess h3{margin:32px 0 8px}
@@ -87,7 +92,7 @@ h3{font-size:19px;margin:0 0 6px}
 
 /* Abgesetzter Hinweis */
 .hinweis{background:var(--papier);border-left:3px solid var(--kupfer);padding:16px 20px;
-         font-size:16px;color:var(--text);max-width:42rem;margin:32px 0 0}
+         font-size:16px;color:var(--text);max-width:var(--mass);margin:32px 0 0}
 
 /* Weiterführender Link unter einem Abschnitt */
 .mehr{margin:22px 0 0}
@@ -100,7 +105,8 @@ h3{font-size:19px;margin:0 0 6px}
 .belege-in{display:grid;grid-template-columns:repeat(4,1fr);gap:26px 24px;
            padding-top:30px;padding-bottom:30px}
 .beleg b{display:block;font-size:27px;font-weight:700;letter-spacing:-.6px;font-variant-numeric:tabular-nums}
-.beleg span{font-size:14px;color:var(--grau);line-height:1.4;display:block;margin-top:2px}
+.beleg span{font-size:14px;color:var(--grau);line-height:1.4;display:block;margin-top:2px;
+            text-wrap:pretty;hyphens:auto}
 
 /* Zweispaltige Aufzählung */
 .zweier{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 32px}
@@ -134,7 +140,7 @@ ol.ablauf li::before{content:counter(schritt,decimal-leading-zero);position:abso
                      width:34px;height:34px;border-radius:50%;background:var(--kupfer);color:#fff;
                      display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
 ol.ablauf h3{margin:5px 0 4px}
-ol.ablauf p{margin:0;color:var(--text);max-width:38rem}
+ol.ablauf p{margin:0;color:var(--text);max-width:var(--mass)}
 ol.ablauf .dauer{font-size:14px;color:var(--grau);display:block;margin-bottom:8px}
 
 /* Rechenbeispiel */
@@ -159,7 +165,7 @@ ol.ablauf .dauer{font-size:14px;color:var(--grau);display:block;margin-bottom:8p
 .abschluss{background:var(--anthrazit);color:var(--papier)}
 .abschluss .wrap{padding-top:56px;padding-bottom:56px}
 .abschluss h2{color:var(--papier)}
-.abschluss p{color:var(--papier-grau);max-width:38rem;margin:0}
+.abschluss p{color:var(--papier-grau);max-width:var(--mass);margin:0}
 .tel{font-size:32px;font-weight:700;letter-spacing:-.8px;display:inline-block;
      margin:0 24px 8px 0;color:var(--papier);text-decoration:none}
 .tel:hover{color:var(--kupfer)}
@@ -206,7 +212,7 @@ footer a:hover{color:var(--kupfer)}
 .programm h3{font-size:21px;margin:0 0 4px}
 .programm .summe-gross{font-size:26px;font-weight:700;letter-spacing:-.8px;color:var(--kupfer);
                        margin:6px 0 8px;font-variant-numeric:tabular-nums}
-.programm .kopfzeile p{margin:0;color:var(--text);max-width:42rem}
+.programm .kopfzeile p{margin:0;color:var(--text);max-width:var(--mass)}
 .programm details{border-top:1px solid var(--linie)}
 .programm details:first-of-type{border-top:0}
 .programm summary{padding:14px 24px;cursor:pointer;font-weight:600;font-size:16px;list-style:none;
@@ -240,7 +246,7 @@ footer a:hover{color:var(--kupfer)}
 .zeiten .nachher{color:var(--kupfer);font-weight:700}
 
 /* Kleingedruckter Rechtshinweis */
-.rechtshinweis{font-size:14px;color:var(--grau);margin:20px 0 0;max-width:42rem}
+.rechtshinweis{font-size:14px;color:var(--grau);margin:20px 0 0;max-width:var(--mass)}
 
 @media(max-width:860px){
   .kennzahlen{grid-template-columns:1fr;gap:18px}
@@ -283,7 +289,7 @@ footer a:hover{color:var(--kupfer)}
 .auftakt-in{padding-top:46px}
 .auftakt h1{font-size:50px;line-height:1.1;letter-spacing:-1.6px;margin:0 0 18px;max-width:20ch}
 .auftakt h1 em{font-style:normal;color:var(--kupfer)}
-.auftakt .lead{color:var(--papier-grau);font-size:20px;max-width:38rem;margin:0 0 30px}
+.auftakt .lead{color:var(--papier-grau);font-size:20px;max-width:var(--mass);margin:0 0 30px}
 
 /* Zwei Knöpfe nebeneinander, der zweite nur mit Rand */
 .knoepfe{display:flex;flex-wrap:wrap;gap:12px;margin:0}
@@ -302,7 +308,7 @@ footer a:hover{color:var(--kupfer)}
 /* Datenschutzband, zweispaltig, zwischen zwei Haarlinien */
 .datenschutz{background:#fff;border-top:1px solid var(--linie);border-bottom:1px solid var(--linie);
              margin-top:var(--block)}
-.datenschutz .wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;
+.datenschutz .wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:44px;
                    padding-top:52px;padding-bottom:52px}
 .datenschutz h2{margin:0}
 .datenschutz p{color:var(--text);margin:0 0 14px}
@@ -313,7 +319,7 @@ footer a:hover{color:var(--kupfer)}
         font-weight:600;margin:0 0 8px}
 
 /* Förderung und Personen nebeneinander */
-.unten{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.unten{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
 .unten > div > h2{margin-bottom:16px}
 .unten .person{margin-bottom:16px}
 
@@ -345,3 +351,22 @@ footer a:hover{color:var(--kupfer)}
 @media(max-width:560px){
   .auftakt.seite{padding-bottom:38px}
 }
+
+/* Zweispaltiger Textabschnitt: Rubrik und Überschrift links, Fließtext rechts.
+   Füllt die Breite, ohne die Zeilen zu lang werden zu lassen. Dasselbe Muster
+   wie .datenschutz auf der Startseite, nur als eigene Klasse zum Wiederverwenden. */
+.gespalten{display:grid;grid-template-columns:1fr 1.5fr;gap:44px;align-items:start}
+.gespalten h2{margin:0}
+.gespalten .kicker + h2{margin-top:0}
+.gespalten > div > :last-child{margin-bottom:0}
+.gespalten .sub{margin:12px 0 0}
+
+@media(max-width:980px){
+  .gespalten{grid-template-columns:1fr;gap:18px}
+}
+
+/* Hinweise und weiterführende Links, die beim zweispaltigen Satz in die
+   Textspalte gewandert sind, behalten ihre Abstände und Farben. */
+.fliess > .hinweis{margin:28px 0 0}
+.fliess > .mehr{margin:22px 0 0}
+.fliess > .rechtshinweis{margin:20px 0 0;color:var(--grau);font-size:14px}
