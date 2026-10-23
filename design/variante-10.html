@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entwurf 10 — Geteilte Seite</title>
+<style>
+  :root{ --anthrazit:#1B2430; --kupfer:#C0713C; --kupfer-dunkel:#A85F30; --grau:#6B7683;
+         --papier:#F5F3EF; --linie:#E1DCD4; --text:#39424F; --papier-grau:#AEB6BF; }
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;color:var(--anthrazit);
+       font-family:Inter,"Segoe UI","Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.65}
+  a{color:var(--kupfer);transition:color .18s ease,background-color .18s ease}
+  a:hover{color:var(--kupfer-dunkel)}
+  a:focus-visible{outline:2px solid var(--kupfer);outline-offset:3px}
+
+  /* Links steht die Visitenkarte und bleibt stehen, rechts läuft der Inhalt durch. */
+  .seite{display:grid;grid-template-columns:380px 1fr}
+  .spalte{background:var(--anthrazit);color:var(--papier);padding:40px 38px;
+          position:sticky;top:0;align-self:start;height:100vh;display:flex;flex-direction:column}
+  .marke{font-size:26px;font-weight:700;letter-spacing:-.6px;color:#fff}
+  .marke small{display:block;font-size:9px;font-weight:600;letter-spacing:2.6px;color:var(--papier-grau);margin-top:2px}
+  .spalte h1{font-size:34px;line-height:1.18;letter-spacing:-1px;margin:auto 0 18px;font-weight:700}
+  .spalte h1 em{font-style:normal;color:var(--kupfer)}
+  .spalte .lead{color:var(--papier-grau);margin:0 0 26px;font-size:17px}
+  .btn{display:inline-block;background:var(--kupfer);color:#fff;text-decoration:none;
+       padding:13px 22px;font-size:16px;font-weight:600;border-radius:3px;align-self:flex-start}
+  .btn:hover{background:var(--kupfer-dunkel);color:#fff}
+  .spalte nav{margin-top:26px;border-top:1px solid rgba(245,243,239,.16);padding-top:16px;
+              display:flex;flex-wrap:wrap;gap:6px 18px}
+  .spalte nav a{color:var(--papier);text-decoration:none;font-size:14px}
+  .spalte nav a:hover{color:var(--kupfer)}
+  .spalte .tel{color:#fff;text-decoration:none;font-size:22px;font-weight:700;letter-spacing:-.5px;margin-top:20px;display:block}
+
+  .inhalt{min-width:0}
+  .block{padding:56px 52px;border-bottom:1px solid var(--linie)}
+  .block.hell{background:var(--papier)}
+  h2.titel{font-size:13px;letter-spacing:2.2px;text-transform:uppercase;color:var(--grau);
+           margin:0 0 26px;font-weight:600}
+
+  /* Leistungen als nummerierte Zeilen, nicht als Kacheln. */
+  .reihe{display:grid;grid-template-columns:52px 210px 1fr;gap:24px;padding:24px 0;
+         border-top:1px solid var(--linie);align-items:baseline}
+  .reihe:last-child{border-bottom:1px solid var(--linie)}
+  .reihe .nr{font-size:14px;font-weight:700;color:var(--kupfer);font-variant-numeric:tabular-nums}
+  .reihe h3{margin:0;font-size:21px;letter-spacing:-.3px}
+  .reihe p{margin:0;color:var(--text);font-size:16px}
+  .reihe a{font-size:14px;display:inline-block;margin-top:8px}
+
+  .hinweis{background:#fff;border-left:3px solid var(--kupfer);padding:18px 22px;margin:30px 0 0;
+           font-size:16px;color:var(--text)}
+  .block.hell .hinweis{background:#fff}
+
+  .stufen{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+  .stufe{border:1px solid var(--linie);background:#fff;padding:22px;border-radius:4px}
+  .stufe.erst{border:2px solid var(--kupfer)}
+  .stufe h3{margin:0;font-size:18px}
+  .stufe .p{font-size:27px;font-weight:700;letter-spacing:-.8px;margin:8px 0 0;font-variant-numeric:tabular-nums}
+  .stufe .p span{font-size:13px;font-weight:400;color:var(--grau)}
+  .stufe p{font-size:15px;color:var(--text);margin:10px 0 0}
+
+  .fliess p{color:var(--text);margin:0 0 14px;max-width:40rem}
+  .personen{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .person{display:flex;gap:16px;align-items:flex-start}
+  .ph{width:76px;height:76px;flex:none;border-radius:4px;background:#E8E3DB;color:var(--grau);
+      display:flex;align-items:center;justify-content:center;font-size:11px;text-align:center}
+  .person h3{margin:0;font-size:18px}
+  .person .rolle{color:var(--kupfer);font-size:15px;margin:2px 0 4px}
+  .person p{font-size:15px;margin:0;color:var(--text)}
+  .fuss{padding:26px 52px;color:var(--grau);font-size:14px}
+
+  @media(prefers-reduced-motion:reduce){a{transition:none}}
+  @media(max-width:1000px){
+    .seite{grid-template-columns:1fr}
+    .spalte{position:static;height:auto;padding:36px 26px}
+    .spalte h1{margin-top:28px}
+    .block{padding:40px 26px}
+    .fuss{padding:22px 26px}
+    .reihe{grid-template-columns:40px 1fr;gap:14px}
+    .reihe p{grid-column:2}
+    .stufen,.personen{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="seite">
+  <aside class="spalte">
+    <div class="marke">Kiratio<small>KI MIT VERSTAND</small></div>
+    <h1>Wir bringen KI in den <em>mainfränkischen Mittelstand</em>.</h1>
+    <p class="lead">Beratung, Coaching, Automatisierung und eigene Software. Vor Ort, umsetzungsstark, ohne Konzernberater-Overhead.</p>
+    <a class="btn" href="#">Erstgespräch vereinbaren</a>
+    <a class="tel" href="#">0176 23547994</a>
+    <nav><a href="#">Leistungen</a><a href="#">Potenzialanalyse</a><a href="#">Umsetzung</a><a href="#">Förderung</a><a href="#">Über uns</a></nav>
+  </aside>
+
+  <main class="inhalt">
+    <div class="block">
+      <h2 class="titel">Unsere Leistungen</h2>
+      <div class="reihe"><span class="nr">01</span>
+        <h3>Beratung</h3>
+        <p>Wir sehen uns Ihre Abläufe an und sagen Ihnen, wo KI etwas bringt und wo nicht. Dazu gehört der EU AI Act: in welche Risikoklasse eine Anwendung fällt, was Sie dokumentieren müssen und was davon schon heute gilt.<br><a href="#">Mehr zur Beratung</a></p>
+      </div>
+      <div class="reihe"><span class="nr">02</span>
+        <h3>Coaching</h3>
+        <p>Wir bringen Ihren Leuten bei, mit den Werkzeugen zu arbeiten, an ihren eigenen Aufgaben statt an Beispielen von der Folie. Seit Februar 2025 verlangt der EU AI Act ohnehin, dass geschult ist, wer im Betrieb mit KI arbeitet.<br><a href="#">Mehr zum Coaching</a></p>
+      </div>
+      <div class="reihe"><span class="nr">03</span>
+        <h3>KI-Automatisierung</h3>
+        <p>Wiederkehrende Arbeit, die heute den Vormittag kostet: Angebote vorbereiten, den Posteingang sortieren, Berichte erzeugen, Daten zwischen zwei Systemen bewegen.<br><a href="#">Mehr zur Automatisierung</a></p>
+      </div>
+      <div class="reihe"><span class="nr">04</span>
+        <h3>Individualsoftware</h3>
+        <p>Wenn kein fertiges Produkt passt, schreiben wir die Software selbst. 35 Jahre Erfahrung mit Java, Spring und Weboberflächen, angebunden an das, was bei Ihnen schon läuft.<br><a href="#">Mehr zur Individualsoftware</a></p>
+      </div>
+      <p class="hinweis">Alles, was wir bauen, muss DSGVO-konform laufen. Vor der ersten Zeile steht die Frage, welche Daten das System zu sehen bekommt und wo sie verarbeitet werden. Wo es nötig ist, bleiben sie im Haus oder auf Servern in der EU.</p>
+    </div>
+
+    <div class="block hell">
+      <h2 class="titel">Drei Stufen, jede einzeln buchbar</h2>
+      <div class="stufen">
+        <div class="stufe erst"><h3>Potenzialanalyse</h3>
+          <div class="p">3.500 € <span>netto</span></div>
+          <p>Zwei bis vier Wochen: Prozessaufnahme vor Ort, Datenlage, drei bis fünf priorisierte Anwendungsfälle, Bericht mit Roadmap.</p></div>
+        <div class="stufe"><h3>Umsetzung</h3>
+          <div class="p">Festpreis</div>
+          <p>Wir bauen selbst und binden an Ihre Bestandssysteme an. Meilensteine und Preis vorher schriftlich.</p></div>
+        <div class="stufe"><h3>Betrieb</h3>
+          <div class="p">ab 500 € <span>/ Monat</span></div>
+          <p>Wartung, Monitoring, Pflege der Modelle, Schulung. Quartalsweise kündbar.</p></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2 class="titel">Die Förderung liefern wir mit</h2>
+      <div class="fliess">
+        <p>Für das Umsetzungsprojekt kommt der Digitalbonus Bayern in Frage, für größere Vorhaben ein KfW-Kredit. Was zu Ihrem Vorhaben passt, klären wir im Erstgespräch. Den Antrag bereiten wir vor, Sie unterschreiben.</p>
+        <p><a href="#">Die Programme im Detail</a></p>
+      </div>
+    </div>
+
+    <div class="block hell">
+      <h2 class="titel">Wer das macht</h2>
+      <div class="personen">
+        <div class="person"><div class="ph">Foto<br>folgt</div>
+          <div><h3>Thomas Hemmerich</h3><p class="rolle">Architektur und Frontend</p>
+          <p>15 Jahre Softwareprojekte in regulierten Branchen.</p></div></div>
+        <div class="person"><div class="ph">Foto<br>folgt</div>
+          <div><h3>Christian Hartmann</h3><p class="rolle">Backend und Integration</p>
+          <p>20 Jahre Java und Spring, Anbindung an ERP-Systeme.</p></div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2 class="titel">Erstgespräch</h2>
+      <div class="fliess">
+        <p>Eine halbe Stunde, kostenlos, am Ende eine klare Aussage, ob sich KI bei Ihnen lohnt. Wenn nicht, sagen wir Ihnen das auch.</p>
+      </div>
+      <a class="btn" href="#">Erstgespräch vereinbaren</a>
+    </div>
+
+    <div class="fuss">Kiratio · Thomas Hemmerich und Christian Hartmann · info@kiratio.de · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></div>
+  </main>
+</div>
+</body>
+</html>
