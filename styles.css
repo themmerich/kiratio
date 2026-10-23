@@ -273,3 +273,27 @@ footer a:hover{color:var(--kupfer)}
 @media(max-width:860px){
   .checkliste{grid-template-columns:1fr;gap:24px}
 }
+
+/* ---------------------------------------------------------------
+   Leistungen auf der Startseite
+   --------------------------------------------------------------- */
+
+/* Zwei Knöpfe nebeneinander unter dem Hero */
+.knoepfe{display:flex;flex-wrap:wrap;gap:12px;margin:0}
+
+/* Vier gleichrangige Karten, eine je Leistung. Die Kupferkante oben
+   unterscheidet sie von den Tarifkarten weiter unten. */
+.leistungen{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.leistung{background:#fff;border:1px solid var(--linie);border-top:3px solid var(--kupfer);
+          border-radius:0 0 4px 4px;padding:20px;display:flex;flex-direction:column}
+.leistung h3{margin:0 0 8px}
+.leistung p{margin:0;color:var(--text);font-size:16px}
+.leistung .mehr{margin:auto 0 0;padding-top:16px;font-size:15px}
+
+@media(max-width:860px){
+  .leistungen{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:560px){
+  .leistungen{grid-template-columns:1fr}
+}
