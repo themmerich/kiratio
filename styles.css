@@ -8,7 +8,7 @@
    (nicht von Google laden, sonst braucht die Seite einen Cookie-Hinweis).
 
    Abstandsregel: .wrap setzt ausschließlich den seitlichen Rand. Vertikale Abstände
-   kommen von Regeln mit höherer Spezifität (section.wrap, .wrap.hero, .abschluss .wrap),
+   kommen von Regeln mit höherer Spezifität (section.wrap, .auftakt-in, .abschluss .wrap),
    damit sie den seitlichen Rand nicht überschreiben. */
 
 :root{
@@ -66,10 +66,7 @@ nav a[aria-current="page"]:not(.btn){color:var(--kupfer);font-weight:600}
 .btn.hell{background:transparent;border:1px solid var(--kupfer);color:var(--kupfer)}
 .btn.hell:hover{background:var(--kupfer);color:#fff}
 
-/* Hero */
-.wrap.hero{padding-top:64px;padding-bottom:var(--block);max-width:46rem}
-.wrap.hero h1{margin-top:0}
-.wrap.hero > :last-child{margin-bottom:0}
+/* Hero: liegt seit dem Umbau im dunklen Auftakt, siehe .auftakt am Dateiende */
 
 /* Abschnitte */
 section.wrap{padding-top:var(--block);padding-bottom:var(--block)}
@@ -188,7 +185,6 @@ footer a:hover{color:var(--kupfer)}
   .fuss-marke img{height:40px}
   .belege-in{grid-template-columns:repeat(2,1fr)}
   .zweier,.preise,.personen{grid-template-columns:1fr}
-  .wrap.hero{padding-top:44px}
   h1{font-size:32px}
   h2{font-size:24px}
   .lead{font-size:18px}
@@ -275,25 +271,77 @@ footer a:hover{color:var(--kupfer)}
 }
 
 /* ---------------------------------------------------------------
-   Leistungen auf der Startseite
+   Startseite: dunkler Auftakt (Entwurf 11 aus design/)
+   Diese Regeln greifen nur auf index.html. Alle übrigen Seiten
+   behalten den hellen, klebenden Kopf aus dem oberen Teil der Datei.
    --------------------------------------------------------------- */
 
-/* Zwei Knöpfe nebeneinander unter dem Hero */
+.auftakt{background:var(--anthrazit);color:var(--papier);padding-bottom:150px}
+.auftakt header{position:static;background:transparent;border-bottom:0}
+.auftakt nav a{color:var(--papier)}
+.auftakt nav a:hover{color:var(--kupfer)}
+.auftakt-in{padding-top:46px}
+.auftakt h1{font-size:50px;line-height:1.1;letter-spacing:-1.6px;margin:0 0 18px;max-width:20ch}
+.auftakt h1 em{font-style:normal;color:var(--kupfer)}
+.auftakt .lead{color:var(--papier-grau);font-size:20px;max-width:38rem;margin:0 0 30px}
+
+/* Zwei Knöpfe nebeneinander, der zweite nur mit Rand */
 .knoepfe{display:flex;flex-wrap:wrap;gap:12px;margin:0}
+.btn.rand{background:transparent;border:1px solid rgba(245,243,239,.45);color:var(--papier)}
+.btn.rand:hover{background:var(--papier);color:var(--anthrazit);border-color:var(--papier)}
 
-/* Vier gleichrangige Karten, eine je Leistung. Die Kupferkante oben
-   unterscheidet sie von den Tarifkarten weiter unten. */
-.leistungen{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.leistung{background:#fff;border:1px solid var(--linie);border-top:3px solid var(--kupfer);
-          border-radius:0 0 4px 4px;padding:20px;display:flex;flex-direction:column}
-.leistung h3{margin:0 0 8px}
-.leistung p{margin:0;color:var(--text);font-size:16px}
-.leistung .mehr{margin:auto 0 0;padding-top:16px;font-size:15px}
+/* Die vier Leistungskarten schieben sich in die dunkle Fläche hinein. */
+.leistungen{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:-110px}
+.leistung{background:#fff;border-radius:6px;padding:26px 22px;display:flex;flex-direction:column;
+          box-shadow:0 10px 30px rgba(27,36,48,.12)}
+.leistung .nr{font-size:12px;letter-spacing:2.2px;font-weight:700;color:var(--kupfer);margin-bottom:12px}
+.leistung h2{font-size:20px;margin:0 0 8px;letter-spacing:-.3px}
+.leistung p{margin:0;color:var(--text);font-size:15px}
+.leistung .mehr{margin:auto 0 0;padding-top:16px;font-size:14px}
 
-@media(max-width:860px){
+/* Datenschutzband, zweispaltig, zwischen zwei Haarlinien */
+.datenschutz{background:#fff;border-top:1px solid var(--linie);border-bottom:1px solid var(--linie);
+             margin-top:var(--block)}
+.datenschutz .wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;
+                   padding-top:52px;padding-bottom:52px}
+.datenschutz h2{margin:0}
+.datenschutz p{color:var(--text);margin:0 0 14px}
+.datenschutz p:last-child{margin-bottom:0}
+
+/* Kleine Rubrik über einer Überschrift */
+.kicker{font-size:13px;letter-spacing:2.2px;text-transform:uppercase;color:var(--grau);
+        font-weight:600;margin:0 0 8px}
+
+/* Förderung und Personen nebeneinander */
+.unten{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.unten > div > h2{margin-bottom:16px}
+.unten .person{margin-bottom:16px}
+
+@media(max-width:980px){
+  .auftakt h1{font-size:34px}
+  .auftakt .lead{font-size:18px}
   .leistungen{grid-template-columns:repeat(2,1fr)}
+  .datenschutz .wrap{grid-template-columns:1fr;gap:24px}
+  .unten{grid-template-columns:1fr;gap:32px}
 }
 
 @media(max-width:560px){
-  .leistungen{grid-template-columns:1fr}
+  .auftakt{padding-bottom:120px}
+  .auftakt-in{padding-top:30px}
+  .leistungen{grid-template-columns:1fr;margin-top:-100px}
+}
+
+/* Unterseiten: derselbe Auftakt, nur ohne den Platz für die Karten darunter.
+   Sie tragen .auftakt.seite, die Startseite nur .auftakt. */
+.auftakt.seite{padding-bottom:52px}
+.auftakt.seite h1{font-size:40px;max-width:24ch}
+.auftakt-in > :last-child{margin-bottom:0}
+
+@media(max-width:980px){
+  .auftakt.seite h1{font-size:31px}
+  .auftakt-in{padding-top:36px}
+}
+
+@media(max-width:560px){
+  .auftakt.seite{padding-bottom:38px}
 }

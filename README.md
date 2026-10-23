@@ -27,12 +27,12 @@ impressum.html
 datenschutz.html
 404.html                Fehlerseite, von CloudFront ausgeliefert
 styles.css              Gestaltung aller Seiten
-design/                 acht Entwürfe der Startseite zur Auswahl
+design/                 zwölf Entwürfe der Startseite zur Auswahl
 infra/                  Terraform für Hosting und Auslieferung
 .github/workflows/      Deploy bei Push auf main
 ```
 
-Der Ordner `design` gehört nicht zur ausgelieferten Seite. Er enthält acht vollständige Entwürfe derselben Startseite in verschiedenen Handschriften, dazu eine Übersicht in `design/index.html`, die jeden Entwurf mit seinem Risiko beschreibt. Die aktuelle Startseite folgt Entwurf 6.
+Der Ordner `design` gehört nicht zur ausgelieferten Seite. Er enthält zwölf vollständige Entwürfe der Startseite in verschiedenen Handschriften, dazu eine Übersicht in `design/index.html`, die jeden Entwurf mit seinem Risiko beschreibt. Entwurf 1 bis 8 zeigen den alten Inhalt, Entwurf 9 bis 12 den heutigen mit den vier Leistungen vorne. Die ausgelieferten Seiten folgen Entwurf 11.
 
 ## Lokal ansehen
 
@@ -70,6 +70,8 @@ Seitenkopf, im Fuß dieselbe Datei umgekehrt auf Anthrazit. Gegenüber dem Origi
 statt `0 0 640 160`), damit die Marke im Kopf nicht halb aus Leerraum besteht.
 
 `.wrap` setzt nur den seitlichen Rand. Vertikale Abstände kommen aus Regeln mit höherer Spezifität wie `section.wrap` oder `.wrap.hero`, damit sie den seitlichen Rand nicht überschreiben. Wer Abstände ändert, sollte diese Trennung beibehalten.
+
+Seit dem Umbau auf Entwurf 11 beginnt jede Seite mit einer anthrazitfarbenen Fläche (`.auftakt`), in der Logo, Navigation und Überschrift hell stehen; im Kopf liegt dort `kiratio-logo-hell.svg`. Der Kopf klebt nicht mehr beim Scrollen, weil er in dieser Fläche sitzt. Auf der Startseite schieben sich die vier Leistungskarten mit einem negativen Außenabstand hinein, deshalb ist die Fläche dort tiefer. Die Unterseiten tragen zusätzlich `.auftakt.seite` und haben entsprechend weniger Abstand nach unten. Die Regeln stehen am Ende von `styles.css`.
 
 Als Schrift ist Inter vorgesehen, allerdings nur als erste Wahl im Schriftstapel. Nachgeladen wird nichts, wer Inter nicht installiert hat, sieht Segoe UI oder Helvetica. Soll die Schrift überall gleich aussehen, müssen die woff2-Dateien im Repository liegen und lokal eingebunden werden.
 
