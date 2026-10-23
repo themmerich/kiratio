@@ -160,6 +160,8 @@ ol.ablauf .dauer{font-size:14px;color:var(--grau);display:block;margin-bottom:8p
 .person h3{margin:0}
 .person .rolle{color:var(--kupfer);font-size:15px;margin:2px 0 8px}
 .person p{margin:0;color:var(--text);font-size:15px}
+.person p + p{margin-top:10px}
+.person .mehr{margin:12px 0 0;font-size:15px}
 
 /* Abschlussblock */
 .abschluss{background:var(--anthrazit);color:var(--papier)}
