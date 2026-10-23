@@ -143,14 +143,6 @@ ol.ablauf h3{margin:5px 0 4px}
 ol.ablauf p{margin:0;color:var(--text);max-width:var(--mass)}
 ol.ablauf .dauer{font-size:14px;color:var(--grau);display:block;margin-bottom:8px}
 
-/* Rechenbeispiel */
-.rechnung{border:1px solid var(--linie);background:var(--papier);padding:22px 24px;max-width:30rem;
-          border-radius:4px;margin:24px 0 0}
-.rechnung table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-.rechnung td{padding:7px 0;font-size:16px}
-.rechnung td:last-child{text-align:right;white-space:nowrap}
-.rechnung tr.summe td{border-top:1px solid var(--anthrazit);font-weight:700;font-size:19px;padding-top:12px}
-
 /* Personen */
 .personen{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
 .person{display:flex;gap:18px;align-items:flex-start;background:var(--papier);padding:20px;border-radius:4px}
@@ -254,9 +246,6 @@ footer a:hover{color:var(--kupfer)}
   .kennzahlen{grid-template-columns:1fr;gap:18px}
   .zeiten{font-size:15px}
 }
-
-/* Zweite Überschrift nach einem Rechenbeispiel */
-.rechnung + h3{margin-top:34px}
 
 /* Voraussetzungen als Checkliste */
 .checkliste{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
