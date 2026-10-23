@@ -2,6 +2,10 @@
 
 Website für Kiratio, eine KI-Beratung für kleine und mittlere Unternehmen in Mainfranken. Die Startseite führt die vier Leistungen auf (Beratung, Coaching, KI-Automatisierung, Individualsoftware), dahinter steht das Angebot in drei Stufen (Potenzialanalyse, Umsetzung, Betrieb) samt der dazugehörigen Förderprogramme.
 
+> Dieses Repository liefert die Website nicht mehr aus. Der Stand vom 23.10.2026 ist nach
+> [kiratio/website](https://github.com/kiratio/website) kopiert worden, dort laufen Deploy und
+> alle weiteren Änderungen. Der Code bleibt hier liegen, ohne Deploy-Workflow.
+
 Preise stehen bewusst nicht auf der Seite (Entscheidung vom 23.10.2026). Was eine Stufe kostet, hängt am Betrieb; der Festpreis wird im Erstgespräch genannt und vor Projektbeginn schriftlich festgehalten. Die Förderseite nennt weiterhin Zahlen, aber nur die der Programme selbst, nicht die eigenen.
 
 Namen, Telefonnummer und Mailadresse stehen und stammen von der Visitenkarte (`04 Firma/Visitenkarte/` im Vault). Die Anschrift steht seit dem 22.10.2026 im Impressum. Impressum und Datenschutzerklärung sind ausformuliert, Rechtsträger ist die Kiratio GbR. Offen sind noch die Fotos der beiden.
@@ -105,9 +109,9 @@ Diese Punkte sind offen und im Quelltext als Kommentar markiert:
 
 Die Seite liegt in einem privaten S3-Bucket in `eu-central-1` und wird über CloudFront ausgeliefert. Route 53 ist für die DNS-Zone zuständig, das Zertifikat kommt von ACM. Alles davon steht in `infra/` und wird mit Terraform verwaltet.
 
-Ein Push auf `main`, also jeder gemergte Pull Request, startet `.github/workflows/deploy.yml`. Der Workflow spiegelt die Dateien nach S3, invalidiert den CloudFront-Cache und wartet, bis die Invalidierung durch ist. Der Job ist erst grün, wenn die Änderung wirklich ausgeliefert wird, das dauert gut eine Minute. `design/`, `infra/` und die README werden dabei ausgeschlossen und landen nicht auf dem Server.
+**Aus diesem Repository wird nicht ausgeliefert.** Der Deploy-Workflow ist am 23.10.2026 entfernt worden. Ein gemergter Pull Request ändert hier nichts mehr an der Website. Die ausgelieferte Fassung liegt unter [kiratio/website](https://github.com/kiratio/website), von dort läuft der Deploy, und dort gehören auch alle weiteren Änderungen an der Seite hin.
 
-Angemeldet wird sich per OpenID Connect gegen eine IAM-Rolle, die nur dieses Repository und nur den Branch `main` akzeptiert. Es liegen keine dauerhaften AWS-Schlüssel im Repository.
+Angemeldet wird sich per OpenID Connect gegen eine IAM-Rolle. Die akzeptiert seit der Umstellung nur `kiratio/website` und nur den Branch `main`; dieses Repository bekommt die Rolle nicht mehr. Es liegen keine dauerhaften AWS-Schlüssel im Repository.
 
 ### Einmalige Einrichtung
 
@@ -121,7 +125,7 @@ Der erste `apply` bleibt bei der Zertifikatsvalidierung stehen, weil die Domain 
 
 **Vor der Umstellung die E-Mail-Einträge sichern.** Sobald Route 53 zuständig ist, beantwortet Strato keine DNS-Anfragen für die Domain mehr, auch nicht die für `post@kiratio.de`. Die bestehenden MX-, SPF- und DKIM-Einträge müssen vorher abgeschrieben und in `route53.tf` nachgebaut werden. Ein auskommentiertes Gerüst dafür steht dort schon.
 
-Anschließend im Repository unter Settings hinterlegen:
+Anschließend unter Settings von `kiratio/website` hinterlegen, nicht hier:
 
 | Name | Art | Wert aus dem Terraform-Output |
 | --- | --- | --- |
@@ -140,6 +144,8 @@ Der Bucket ist nicht öffentlich, gelesen wird er ausschließlich von dieser ein
 Die Dateinamen tragen keine Hashes. Deshalb wird `max-age=0, s-maxage=31536000, must-revalidate` gesetzt: Browser fragen jedes Mal nach, das CDN hält die Datei trotzdem, und die Invalidierung beim Deploy sorgt für den Rest.
 
 ## Änderungen einbringen
+
+Änderungen an der Website gehören nach `kiratio/website`. Was hier gemergt wird, bleibt ohne Wirkung auf die ausgelieferte Seite.
 
 Der Branch `main` ist geschützt. Direkte Pushes werden abgelehnt, jede Änderung läuft über einen Pull Request:
 
