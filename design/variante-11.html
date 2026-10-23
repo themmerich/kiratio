@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entwurf 11 — Dunkler Auftakt</title>
+<style>
+  :root{ --anthrazit:#1B2430; --kupfer:#C0713C; --kupfer-dunkel:#A85F30; --grau:#6B7683;
+         --papier:#F5F3EF; --linie:#E1DCD4; --text:#39424F; --papier-grau:#AEB6BF; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papier);color:var(--anthrazit);
+       font-family:Inter,"Segoe UI","Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.65}
+  a{color:var(--kupfer);transition:color .18s ease,background-color .18s ease}
+  a:hover{color:var(--kupfer-dunkel)}
+  a:focus-visible{outline:2px solid var(--kupfer);outline-offset:3px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 26px}
+
+  /* Oben eine dunkle Fläche, in die sich die Leistungskarten hineinschieben. */
+  .auftakt{background:var(--anthrazit);color:var(--papier);padding:26px 0 150px}
+  .kopf{display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap}
+  .marke{font-size:25px;font-weight:700;letter-spacing:-.6px;color:#fff}
+  .marke small{display:block;font-size:9px;font-weight:600;letter-spacing:2.6px;color:var(--papier-grau)}
+  .kopf nav{display:flex;flex-wrap:wrap;gap:6px 22px}
+  .kopf nav a{color:var(--papier);text-decoration:none;font-size:15px}
+  .kopf nav a:hover{color:var(--kupfer)}
+  .auftakt h1{font-size:50px;line-height:1.1;letter-spacing:-1.6px;font-weight:700;
+              margin:64px 0 18px;max-width:20ch}
+  .auftakt h1 em{font-style:normal;color:var(--kupfer)}
+  .auftakt .lead{color:var(--papier-grau);font-size:20px;max-width:38rem;margin:0 0 30px}
+  .btn{display:inline-block;background:var(--kupfer);color:#fff;text-decoration:none;
+       padding:14px 26px;font-size:16px;font-weight:600;border-radius:3px}
+  .btn:hover{background:var(--kupfer-dunkel);color:#fff}
+  .btn.rand{background:transparent;border:1px solid rgba(245,243,239,.45);color:var(--papier);margin-left:10px}
+  .btn.rand:hover{background:var(--papier);color:var(--anthrazit);border-color:var(--papier)}
+
+  .karten{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:-110px;padding-bottom:10px}
+  .karte{background:#fff;border-radius:6px;padding:26px 22px;box-shadow:0 10px 30px rgba(27,36,48,.12);
+         display:flex;flex-direction:column}
+  .karte .nr{font-size:12px;letter-spacing:2.2px;font-weight:700;color:var(--kupfer);margin-bottom:12px}
+  .karte h2{font-size:20px;margin:0 0 8px;letter-spacing:-.3px}
+  .karte p{margin:0;color:var(--text);font-size:15px}
+  .karte a{margin-top:auto;padding-top:16px;font-size:14px}
+
+  section{padding:62px 0}
+  .titel{font-size:13px;letter-spacing:2.2px;text-transform:uppercase;color:var(--grau);margin:0 0 12px;font-weight:600}
+  h2.gross{font-size:30px;letter-spacing:-.8px;margin:0 0 10px}
+  .sub{color:var(--grau);max-width:42rem;margin:0 0 28px}
+
+  .datenschutz{background:#fff;border-top:1px solid var(--linie);border-bottom:1px solid var(--linie)}
+  .datenschutz .wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;padding-top:52px;padding-bottom:52px}
+  .datenschutz p{color:var(--text);margin:0 0 14px}
+  .datenschutz p:last-child{margin-bottom:0}
+
+  .stufen{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+  .stufe{background:#fff;border:1px solid var(--linie);border-radius:6px;padding:24px}
+  .stufe.erst{border:2px solid var(--kupfer)}
+  .stufe h3{margin:0;font-size:19px}
+  .stufe .p{font-size:30px;font-weight:700;letter-spacing:-1px;margin:10px 0 0;font-variant-numeric:tabular-nums}
+  .stufe .p span{font-size:14px;font-weight:400;color:var(--grau)}
+  .stufe p{font-size:15px;color:var(--text);margin:10px 0 0}
+
+  .unten{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .unten p{color:var(--text);margin:0 0 14px}
+  .person{display:flex;gap:16px;align-items:flex-start;margin-bottom:18px}
+  .ph{width:78px;height:78px;flex:none;border-radius:6px;background:#E8E3DB;color:var(--grau);
+      display:flex;align-items:center;justify-content:center;font-size:11px;text-align:center}
+  .person h3{margin:0;font-size:18px}
+  .person .rolle{color:var(--kupfer);font-size:15px;margin:2px 0 4px}
+  .person p{font-size:15px;margin:0}
+
+  .abschluss{background:var(--anthrazit);color:var(--papier);padding:54px 0}
+  .abschluss h2{color:#fff;font-size:30px;letter-spacing:-.8px;margin:0 0 10px}
+  .abschluss p{color:var(--papier-grau);max-width:38rem;margin:0}
+  .tel{font-size:32px;font-weight:700;letter-spacing:-.8px;color:#fff;text-decoration:none;
+       display:inline-block;margin:24px 24px 0 0}
+  .tel:hover{color:var(--kupfer)}
+  footer{background:var(--anthrazit);color:var(--papier-grau);font-size:14px;padding:0 0 32px}
+  footer .wrap{border-top:1px solid rgba(245,243,239,.14);padding-top:22px}
+  footer a{color:var(--papier)}
+
+  @media(prefers-reduced-motion:reduce){a{transition:none}}
+  @media(max-width:980px){
+    .karten{grid-template-columns:repeat(2,1fr)}
+    .auftakt h1{font-size:34px;margin-top:40px}
+    .datenschutz .wrap,.unten{grid-template-columns:1fr;gap:24px}
+    .stufen{grid-template-columns:1fr}
+  }
+  @media(max-width:560px){
+    .auftakt{padding-bottom:120px}
+    .karten{grid-template-columns:1fr;margin-top:-100px}
+    .btn.rand{margin:10px 0 0}
+  }
+</style>
+</head>
+<body>
+<div class="auftakt"><div class="wrap">
+  <div class="kopf">
+    <div class="marke">Kiratio<small>KI MIT VERSTAND</small></div>
+    <nav><a href="#">Leistungen</a><a href="#">Potenzialanalyse</a><a href="#">Förderung</a><a href="#">Über uns</a><a href="#">Erstgespräch</a></nav>
+  </div>
+  <h1>Wir bringen KI in den <em>mainfränkischen Mittelstand</em>.</h1>
+  <p class="lead">Beratung, Coaching, Automatisierung und eigene Software. Vor Ort, umsetzungsstark, ohne Konzernberater-Overhead.</p>
+  <a class="btn" href="#">Erstgespräch vereinbaren</a><a class="btn rand" href="#">Leistungen ansehen</a>
+</div></div>
+
+<div class="wrap"><div class="karten">
+  <div class="karte"><div class="nr">01</div>
+    <h2>Beratung</h2>
+    <p>Wo KI etwas bringt und wo nicht. Dazu der EU AI Act: in welche Risikoklasse eine Anwendung fällt und was davon schon heute gilt.</p>
+    <a href="#">Mehr zur Beratung</a></div>
+  <div class="karte"><div class="nr">02</div>
+    <h2>Coaching</h2>
+    <p>Schulung an den eigenen Aufgaben statt an Beispielen von der Folie, dokumentiert, wie Artikel 4 des AI Act es verlangt.</p>
+    <a href="#">Mehr zum Coaching</a></div>
+  <div class="karte"><div class="nr">03</div>
+    <h2>KI-Automatisierung</h2>
+    <p>Angebote, Posteingang, Berichte, Datenübertrag zwischen Systemen. Läuft im Hintergrund und fragt im Zweifel nach.</p>
+    <a href="#">Mehr zur Automatisierung</a></div>
+  <div class="karte"><div class="nr">04</div>
+    <h2>Individualsoftware</h2>
+    <p>Wenn kein fertiges Produkt passt: Java, Spring und Weboberflächen, angebunden an das, was bei Ihnen schon läuft.</p>
+    <a href="#">Mehr zur Individualsoftware</a></div>
+</div></div>
+
+<div class="datenschutz"><div class="wrap">
+  <div>
+    <p class="titel">Datenschutz</p>
+    <h2 class="gross">Wo Ihre Daten bleiben, steht vorher fest.</h2>
+  </div>
+  <div>
+    <p>Alles, was wir bauen, muss DSGVO-konform laufen. Vor der ersten Zeile klären wir, welche Daten das System überhaupt zu sehen bekommt, wo sie verarbeitet werden und was davon beim Anbieter des Modells landet.</p>
+    <p>Wo es nötig ist, bleiben die Daten im Haus oder auf Servern in der EU. Dazu kommt die Frage, was der EU AI Act für Ihren Fall bedeutet. Beides klären wir, bevor gebaut wird. <a href="#">Mehr zur Beratung</a></p>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <p class="titel">Zusammenarbeit</p>
+  <h2 class="gross">Drei Stufen, jede einzeln buchbar</h2>
+  <p class="sub">Sie müssen sich nicht auf ein Projekt festlegen, um anzufangen. Die meisten beginnen mit der Analyse und entscheiden danach in Ruhe.</p>
+  <div class="stufen">
+    <div class="stufe erst"><h3>Potenzialanalyse</h3>
+      <div class="p">3.500 € <span>netto</span></div>
+      <p>Zwei bis vier Wochen: Prozessaufnahme vor Ort, Datenlage, drei bis fünf priorisierte Anwendungsfälle, Bericht mit Roadmap.</p></div>
+    <div class="stufe"><h3>Umsetzung</h3>
+      <div class="p">Festpreis</div>
+      <p>Wir bauen selbst und binden an Ihre Bestandssysteme an. Meilensteine und Preis vorher schriftlich, Digitalbonus-Antrag vorbereitet.</p></div>
+    <div class="stufe"><h3>Betrieb</h3>
+      <div class="p">ab 500 € <span>/ Monat</span></div>
+      <p>Wartung, Monitoring, Pflege der Modelle, Schulung, kleinere Erweiterungen. Quartalsweise kündbar.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap unten">
+  <div>
+    <p class="titel">Förderung</p>
+    <h2 class="gross">Den Antrag bereiten wir vor</h2>
+    <p>Für das Umsetzungsprojekt kommt der Digitalbonus Bayern in Frage, für größere Vorhaben ein KfW-Kredit. Was zu Ihrem Vorhaben passt, klären wir im Erstgespräch. Sie unterschreiben.</p>
+    <p><a href="#">Die Programme im Detail</a></p>
+  </div>
+  <div>
+    <p class="titel">Wer das macht</p>
+    <h2 class="gross">Zwei Entwickler, kein Juniorteam</h2>
+    <div class="person"><div class="ph">Foto<br>folgt</div>
+      <div><h3>Thomas Hemmerich</h3><p class="rolle">Architektur und Frontend</p>
+      <p>15 Jahre Softwareprojekte in regulierten Branchen.</p></div></div>
+    <div class="person"><div class="ph">Foto<br>folgt</div>
+      <div><h3>Christian Hartmann</h3><p class="rolle">Backend und Integration</p>
+      <p>20 Jahre Java und Spring, Anbindung an ERP-Systeme.</p></div></div>
+  </div>
+</div></section>
+
+<div class="abschluss"><div class="wrap">
+  <h2>Reden wir eine halbe Stunde darüber.</h2>
+  <p>Das Erstgespräch kostet nichts und endet mit einer klaren Aussage, ob sich KI bei Ihnen lohnt. Wenn nicht, sagen wir Ihnen das auch.</p>
+  <a class="tel" href="#">0176 23547994</a><a class="btn" href="#">Erstgespräch vereinbaren</a>
+</div></div>
+
+<footer><div class="wrap">Kiratio · Thomas Hemmerich und Christian Hartmann · info@kiratio.de · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></div></footer>
+</body>
+</html>

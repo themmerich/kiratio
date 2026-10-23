@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entwurf 12 — Register</title>
+<style>
+  :root{ --anthrazit:#1B2430; --kupfer:#C0713C; --kupfer-dunkel:#A85F30; --grau:#6B7683;
+         --papier:#F5F3EF; --linie:#D9D3CA; --text:#39424F;
+         --mono:ui-monospace,"Cascadia Mono","Consolas","DejaVu Sans Mono",monospace; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papier);color:var(--anthrazit);
+       font-family:Inter,"Segoe UI","Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.6}
+  a{color:var(--kupfer);transition:color .18s ease}
+  a:hover{color:var(--kupfer-dunkel)}
+  a:focus-visible{outline:2px solid var(--kupfer);outline-offset:3px}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 26px}
+
+  /* Keine Kacheln, keine Flächen: alles steht in Zeilen zwischen Haarlinien. */
+  header{padding:20px 0;border-bottom:2px solid var(--anthrazit)}
+  .kopf{display:flex;justify-content:space-between;align-items:baseline;gap:12px 20px;flex-wrap:wrap}
+  .marke{font-size:24px;font-weight:700;letter-spacing:-.5px}
+  .marke small{font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:1.6px;
+               color:var(--grau);margin-left:10px}
+  nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+  nav a{font-family:var(--mono);color:var(--anthrazit);text-decoration:none;font-size:13px}
+  nav a:hover{color:var(--kupfer)}
+
+  .marke-zeile{font-family:var(--mono);font-size:12px;letter-spacing:1.8px;color:var(--grau);flex-wrap:wrap;
+               text-transform:uppercase;display:flex;justify-content:space-between;gap:16px;
+               padding:10px 0;border-bottom:1px solid var(--linie)}
+
+  h1{font-size:44px;line-height:1.14;letter-spacing:-1.3px;font-weight:700;margin:40px 0 16px;max-width:22ch}
+  h1 em{font-style:normal;color:var(--kupfer)}
+  .lead{font-size:19px;color:var(--text);max-width:40rem;margin:0 0 28px}
+  .btn{display:inline-block;background:var(--anthrazit);color:var(--papier);text-decoration:none;
+       padding:12px 22px;font-size:15px;font-weight:600;font-family:var(--mono);letter-spacing:.4px}
+  .btn:hover{background:var(--kupfer);color:#fff}
+  .hero{padding-bottom:40px}
+
+  .abschnitt{border-top:2px solid var(--anthrazit);padding:0 0 40px}
+  .kennung{font-family:var(--mono);font-size:12px;letter-spacing:1.8px;text-transform:uppercase;
+           color:var(--grau);padding:10px 0 26px;display:flex;justify-content:space-between;gap:16px}
+  .kennung b{color:var(--anthrazit);font-weight:600}
+
+  /* Die Leistungen als Register, große Nummer links. */
+  .eintrag{display:grid;grid-template-columns:96px 1fr 1.25fr;gap:28px;padding:22px 0;
+           border-top:1px solid var(--linie);align-items:start}
+  .eintrag:hover{background:rgba(192,113,60,.045)}
+  .eintrag .nr{font-family:var(--mono);font-size:34px;font-weight:700;color:var(--kupfer);
+               line-height:1;letter-spacing:-1px}
+  .eintrag h2{font-size:23px;margin:0;letter-spacing:-.4px}
+  .eintrag .was{font-family:var(--mono);font-size:12px;letter-spacing:1.4px;color:var(--grau);
+                text-transform:uppercase;margin:6px 0 0}
+  .eintrag p{margin:0;color:var(--text);font-size:16px}
+  .eintrag a{font-family:var(--mono);font-size:13px;display:inline-block;margin-top:10px}
+
+  .notiz{display:grid;grid-template-columns:96px 1fr;gap:28px;padding:22px 0;border-top:1px solid var(--linie)}
+  .notiz .marke-mono{font-family:var(--mono);font-size:12px;letter-spacing:1.4px;color:var(--grau);text-transform:uppercase}
+  .notiz p{margin:0;color:var(--text);max-width:46rem}
+
+  .preisliste{width:100%;border-collapse:collapse}
+  .preisliste th{font-family:var(--mono);font-size:12px;letter-spacing:1.4px;text-transform:uppercase;
+                 color:var(--grau);font-weight:400;text-align:left;padding:0 0 10px;border-bottom:1px solid var(--linie)}
+  .preisliste th:last-child,.preisliste td:last-child{text-align:right}
+  .preisliste td{padding:18px 0;border-bottom:1px solid var(--linie);vertical-align:top}
+  .preisliste .was{font-size:19px;font-weight:700;letter-spacing:-.3px;display:block;margin-bottom:4px}
+  .preisliste .det{font-size:15px;color:var(--text)}
+  .preisliste .preis{font-size:24px;font-weight:700;letter-spacing:-.8px;white-space:nowrap;
+                     font-variant-numeric:tabular-nums}
+  .preisliste .preis small{display:block;font-size:13px;font-weight:400;color:var(--grau);letter-spacing:0}
+
+  .spalten{columns:2;column-gap:40px}
+  .spalten p{margin:0 0 14px;color:var(--text);break-inside:avoid}
+  .personen{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .person{display:grid;grid-template-columns:72px 1fr;gap:16px}
+  .ph{width:72px;height:72px;background:#E6E1D9;color:var(--grau);display:flex;align-items:center;
+      justify-content:center;font-family:var(--mono);font-size:10px;text-align:center;letter-spacing:1px}
+  .person h3{margin:0;font-size:18px}
+  .person .rolle{font-family:var(--mono);font-size:12px;letter-spacing:1.2px;text-transform:uppercase;
+                 color:var(--kupfer);margin:4px 0}
+  .person p{margin:0;font-size:15px;color:var(--text)}
+
+  .schluss{border-top:2px solid var(--anthrazit);padding:36px 0 46px;
+           display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .schluss h2{font-size:28px;letter-spacing:-.7px;margin:0 0 8px;max-width:24ch}
+  .schluss p{margin:0;color:var(--text);max-width:34rem}
+  .tel{font-size:30px;font-weight:700;letter-spacing:-.8px;color:var(--anthrazit);text-decoration:none;
+       display:block;margin-bottom:12px;font-variant-numeric:tabular-nums}
+  .tel:hover{color:var(--kupfer)}
+  footer{border-top:1px solid var(--linie);font-family:var(--mono);font-size:12px;letter-spacing:.6px;
+         color:var(--grau);padding:16px 0 40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer a{color:var(--grau)}
+
+  @media(prefers-reduced-motion:reduce){a{transition:none}}
+  @media(max-width:860px){
+    h1{font-size:31px}
+    .eintrag{grid-template-columns:54px 1fr;gap:16px}
+    .eintrag p{grid-column:2}
+    .eintrag .nr{font-size:24px}
+    .notiz{grid-template-columns:1fr;gap:10px}
+    .spalten{columns:1}
+    .personen{grid-template-columns:1fr}
+    .preisliste thead{display:none}
+    .preisliste tr{display:block;border-bottom:1px solid var(--linie);padding:14px 0}
+    .preisliste td{display:block;padding:0;border:0;text-align:left}
+    .preisliste td:last-child{margin-top:10px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><div class="kopf">
+    <div class="marke">Kiratio<small>KI MIT VERSTAND</small></div>
+    <nav><a href="#">Leistungen</a><a href="#">Analyse</a><a href="#">Umsetzung</a><a href="#">Förderung</a><a href="#">Über uns</a></nav>
+  </div></header>
+
+  <div class="marke-zeile"><span>KI-Beratung und Umsetzung</span><span>Mainfranken · 45 km Anfahrtsradius</span><span>0176 23547994</span></div>
+
+  <div class="hero">
+    <h1>Wir bringen KI in den <em>mainfränkischen Mittelstand</em>.</h1>
+    <p class="lead">Beratung, Coaching, Automatisierung und eigene Software. Vor Ort, umsetzungsstark, ohne Konzernberater-Overhead.</p>
+    <a class="btn" href="#">Erstgespräch vereinbaren</a>
+  </div>
+
+  <div class="abschnitt">
+    <div class="kennung"><b>01–04 Leistungen</b><span>Einzeln buchbar</span></div>
+
+    <div class="eintrag">
+      <div class="nr">01</div>
+      <div><h2>Beratung</h2><p class="was">Einordnung · EU AI Act</p></div>
+      <p>Wir sehen uns Ihre Abläufe an und sagen Ihnen, wo KI etwas bringt und wo nicht. Dazu gehört der EU AI Act: in welche Risikoklasse eine Anwendung fällt, was Sie dokumentieren müssen und was davon schon heute gilt.
+      <a href="#">Mehr zur Beratung</a></p>
+    </div>
+    <div class="eintrag">
+      <div class="nr">02</div>
+      <div><h2>Coaching</h2><p class="was">Schulung · Begleitung</p></div>
+      <p>Wir bringen Ihren Leuten bei, mit den Werkzeugen zu arbeiten, an ihren eigenen Aufgaben statt an Beispielen von der Folie. Seit Februar 2025 verlangt der EU AI Act ohnehin, dass geschult ist, wer im Betrieb mit KI arbeitet.
+      <a href="#">Mehr zum Coaching</a></p>
+    </div>
+    <div class="eintrag">
+      <div class="nr">03</div>
+      <div><h2>KI-Automatisierung</h2><p class="was">Abläufe · Schnittstellen</p></div>
+      <p>Wiederkehrende Arbeit, die heute den Vormittag kostet: Angebote vorbereiten, den Posteingang sortieren, Berichte erzeugen, Daten zwischen zwei Systemen bewegen. Das läuft danach im Hintergrund und fragt im Zweifel nach.
+      <a href="#">Mehr zur Automatisierung</a></p>
+    </div>
+    <div class="eintrag">
+      <div class="nr">04</div>
+      <div><h2>Individualsoftware</h2><p class="was">Java · Spring · Web</p></div>
+      <p>Wenn kein fertiges Produkt passt, schreiben wir die Software selbst. 35 Jahre Erfahrung mit Java, Spring und Weboberflächen, angebunden an das, was bei Ihnen schon läuft.
+      <a href="#">Mehr zur Individualsoftware</a></p>
+    </div>
+    <div class="notiz">
+      <div class="marke-mono">Datenschutz</div>
+      <p>Alles, was wir bauen, muss DSGVO-konform laufen. Vor der ersten Zeile steht die Frage, welche Daten das System überhaupt zu sehen bekommt, wo sie verarbeitet werden und was davon beim Anbieter des Modells landet. Wo es nötig ist, bleiben die Daten im Haus oder auf Servern in der EU.</p>
+    </div>
+  </div>
+
+  <div class="abschnitt">
+    <div class="kennung"><b>Zusammenarbeit</b><span>Drei Stufen · Festpreis je Stufe</span></div>
+    <table class="preisliste">
+      <thead><tr><th>Stufe</th><th>Preis</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="was">Potenzialanalyse</span>
+            <span class="det">Zwei bis vier Wochen: Prozessaufnahme vor Ort, Bewertung der Datenlage, drei bis fünf priorisierte Anwendungsfälle, Bericht mit Roadmap und Fördereinschätzung.</span></td>
+          <td class="preis">3.500 €<small>netto, einmalig</small></td>
+        </tr>
+        <tr>
+          <td><span class="was">Umsetzung und Integration</span>
+            <span class="det">Wir bauen selbst, keine Übergabe an Dritte. Anbindung an Ihre Bestandssysteme, Meilensteine und Preis vorher schriftlich, Digitalbonus-Antrag vorbereitet.</span></td>
+          <td class="preis">Festpreis<small>nach der Analyse</small></td>
+        </tr>
+        <tr>
+          <td><span class="was">Betrieb und Weiterentwicklung</span>
+            <span class="det">Wartung, Monitoring, Pflege von Modellen und Prompts, Schulung Ihrer Leute, kleinere Erweiterungen.</span></td>
+          <td class="preis">ab 500 €<small>im Monat, quartalsweise kündbar</small></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="abschnitt">
+    <div class="kennung"><b>Förderung</b><span>Digitalbonus Bayern · KfW</span></div>
+    <div class="spalten">
+      <p>Für das Umsetzungsprojekt kommt der Digitalbonus Bayern in Frage, für größere Vorhaben ein KfW-Kredit. Was zu Ihrem Vorhaben passt, klären wir im Erstgespräch.</p>
+      <p>Den Antrag bereiten wir vor, Sie unterschreiben. Wichtig dabei: Er muss vor Projektbeginn bewilligt sein, das verlängert den Vorlauf um einige Wochen. <a href="#">Die Programme im Detail</a></p>
+    </div>
+  </div>
+
+  <div class="abschnitt">
+    <div class="kennung"><b>Wer das macht</b><span>35 Jahre zu zweit</span></div>
+    <div class="personen">
+      <div class="person"><div class="ph">FOTO<br>FOLGT</div>
+        <div><h3>Thomas Hemmerich</h3><p class="rolle">Architektur und Frontend</p>
+        <p>15 Jahre Softwareprojekte in regulierten Branchen.</p></div></div>
+      <div class="person"><div class="ph">FOTO<br>FOLGT</div>
+        <div><h3>Christian Hartmann</h3><p class="rolle">Backend und Integration</p>
+        <p>20 Jahre Java und Spring, Anbindung an ERP-Systeme.</p></div></div>
+    </div>
+  </div>
+
+  <div class="schluss">
+    <div>
+      <h2>Reden wir eine halbe Stunde darüber.</h2>
+      <p>Das Erstgespräch kostet nichts und endet mit einer klaren Aussage, ob sich KI bei Ihnen lohnt. Wenn nicht, sagen wir Ihnen das auch.</p>
+    </div>
+    <div>
+      <a class="tel" href="#">0176 23547994</a>
+      <a class="btn" href="#">Erstgespräch vereinbaren</a>
+    </div>
+  </div>
+
+  <footer>
+    <span>Kiratio · Thomas Hemmerich und Christian Hartmann · info@kiratio.de</span>
+    <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a></span>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entwurf 9 — Leistungstafel</title>
+<style>
+  :root{ --anthrazit:#1B2430; --kupfer:#C0713C; --kupfer-dunkel:#A85F30; --grau:#6B7683;
+         --papier:#F5F3EF; --linie:#E1DCD4; --text:#39424F; --papier-grau:#AEB6BF; }
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;color:var(--anthrazit);
+       font-family:Inter,"Segoe UI","Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.65}
+  a{color:var(--kupfer);transition:color .18s ease,background-color .18s ease}
+  a:hover{color:var(--kupfer-dunkel)}
+  a:focus-visible{outline:2px solid var(--kupfer);outline-offset:3px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+
+  header{border-bottom:1px solid var(--linie)}
+  .kopf{display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap;
+        padding:18px 0}
+  .marke{font-size:25px;font-weight:700;letter-spacing:-.6px}
+  .marke small{display:block;font-size:9px;font-weight:600;letter-spacing:2.6px;color:var(--grau)}
+  nav{display:flex;flex-wrap:wrap;gap:6px 22px}
+  nav a{color:var(--anthrazit);text-decoration:none;font-size:15px}
+  nav a:hover{color:var(--kupfer)}
+
+  /* Die Tafel steht vor allem anderen: vier Leistungen, sonst nichts. */
+  .tafel{background:var(--papier);border-bottom:1px solid var(--linie)}
+  .tafel-in{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linie);
+            border-left:1px solid var(--linie);border-right:1px solid var(--linie)}
+  .fach{background:var(--papier);padding:30px 26px}
+  .fach .nr{font-size:12px;letter-spacing:2.4px;color:var(--kupfer);font-weight:700;display:block;margin-bottom:10px}
+  .fach h2{font-size:20px;margin:0 0 8px;letter-spacing:-.3px}
+  .fach p{margin:0;font-size:15px;color:var(--text)}
+  .fach a{font-size:14px;display:inline-block;margin-top:12px}
+
+  .aussage{padding:72px 0 64px}
+  .aussage-in{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:end}
+  h1{font-size:46px;line-height:1.12;letter-spacing:-1.4px;margin:0;font-weight:700}
+  h1 em{font-style:normal;color:var(--kupfer)}
+  .aussage p{color:var(--text);font-size:19px;margin:0 0 24px}
+  .btn{display:inline-block;background:var(--kupfer);color:#fff;text-decoration:none;
+       padding:13px 24px;font-size:16px;font-weight:600;border-radius:3px}
+  .btn:hover{background:var(--kupfer-dunkel);color:#fff}
+  .btn.hell{background:transparent;border:1px solid var(--kupfer);color:var(--kupfer);margin-left:10px}
+  .btn.hell:hover{background:var(--kupfer);color:#fff}
+
+  .band{background:var(--anthrazit);color:var(--papier)}
+  .band-in{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:46px 0}
+  .band h2{font-size:26px;margin:0;letter-spacing:-.5px;line-height:1.25}
+  .band p{margin:0;color:var(--papier-grau)}
+  .band p + p{margin-top:14px}
+
+  section{padding:64px 0;border-bottom:1px solid var(--linie)}
+  h3.titel{font-size:13px;letter-spacing:2.2px;text-transform:uppercase;color:var(--grau);margin:0 0 18px;font-weight:600}
+  .stufen{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+  .stufe{border:1px solid var(--linie);padding:24px;border-radius:4px}
+  .stufe.erst{border:2px solid var(--kupfer)}
+  .stufe h4{margin:0;font-size:19px}
+  .stufe .p{font-size:30px;font-weight:700;letter-spacing:-1px;margin:10px 0 0;font-variant-numeric:tabular-nums}
+  .stufe .p span{font-size:14px;font-weight:400;color:var(--grau)}
+  .stufe p{font-size:15px;color:var(--text);margin:10px 0 0}
+
+  .zwei{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .zwei p{color:var(--text);margin:0 0 14px}
+  .person{display:flex;gap:16px;align-items:flex-start;margin-bottom:18px}
+  .ph{width:78px;height:78px;flex:none;border-radius:4px;background:#E8E3DB;color:var(--grau);
+      display:flex;align-items:center;justify-content:center;font-size:11px;text-align:center}
+  .person h4{margin:0;font-size:18px}
+  .person .rolle{color:var(--kupfer);font-size:15px;margin:2px 0 4px}
+  .person p{font-size:15px;margin:0}
+
+  .abschluss{background:var(--papier);padding:56px 0}
+  .abschluss h2{font-size:28px;margin:0 0 10px;letter-spacing:-.6px}
+  .abschluss p{color:var(--text);max-width:36rem;margin:0}
+  .tel{font-size:32px;font-weight:700;letter-spacing:-.8px;color:var(--anthrazit);text-decoration:none;
+       display:inline-block;margin:22px 24px 0 0}
+  .tel:hover{color:var(--kupfer)}
+  footer{background:var(--anthrazit);color:var(--papier-grau);font-size:14px;padding:30px 0}
+  footer a{color:var(--papier)}
+
+  @media(prefers-reduced-motion:reduce){a{transition:none}}
+  @media(max-width:980px){
+    .tafel-in{grid-template-columns:repeat(2,1fr)}
+    .aussage-in,.band-in,.zwei{grid-template-columns:1fr;gap:26px}
+    .stufen{grid-template-columns:1fr}
+    h1{font-size:34px}
+  }
+  @media(max-width:560px){
+    .tafel-in{grid-template-columns:1fr}
+    .btn.hell{margin:10px 0 0}
+  }
+</style>
+</head>
+<body>
+<header><div class="wrap kopf">
+  <div class="marke">Kiratio<small>KI MIT VERSTAND</small></div>
+  <nav><a href="#">Leistungen</a><a href="#">Potenzialanalyse</a><a href="#">Förderung</a><a href="#">Über uns</a><a href="#">Erstgespräch</a></nav>
+</div></header>
+
+<!-- Die Leistungen stehen vor der Aussage, nicht danach. -->
+<div class="tafel"><div class="wrap"><div class="tafel-in">
+  <div class="fach"><span class="nr">01</span>
+    <h2>Beratung</h2>
+    <p>Wo KI etwas bringt und wo nicht. Dazu der EU AI Act: Risikoklasse, Pflichten, was schon heute gilt.</p>
+    <a href="#">Mehr zur Beratung</a>
+  </div>
+  <div class="fach"><span class="nr">02</span>
+    <h2>Coaching</h2>
+    <p>Schulung an den eigenen Aufgaben statt an Beispielen von der Folie. Nachweisbar, wie Artikel 4 es verlangt.</p>
+    <a href="#">Mehr zum Coaching</a>
+  </div>
+  <div class="fach"><span class="nr">03</span>
+    <h2>KI-Automatisierung</h2>
+    <p>Posteingang, Angebote, Berichte, Datenübertrag. Läuft im Hintergrund und fragt im Zweifel nach.</p>
+    <a href="#">Mehr zur Automatisierung</a>
+  </div>
+  <div class="fach"><span class="nr">04</span>
+    <h2>Individualsoftware</h2>
+    <p>Wenn kein Produkt passt: Java, Spring und Weboberflächen, angebunden an das Bestehende.</p>
+    <a href="#">Mehr zur Individualsoftware</a>
+  </div>
+</div></div></div>
+
+<div class="aussage"><div class="wrap aussage-in">
+  <h1>Wir bringen KI in den <em>mainfränkischen Mittelstand</em>.</h1>
+  <div>
+    <p>Vor Ort, umsetzungsstark, ohne Konzernberater-Overhead. Zwei Entwickler, die beraten, was sie hinterher selbst bauen.</p>
+    <a class="btn" href="#">Erstgespräch vereinbaren</a><a class="btn hell" href="#">Analyse ansehen</a>
+  </div>
+</div></div>
+
+<div class="band"><div class="wrap band-in">
+  <h2>Alles, was wir bauen, muss DSGVO-konform laufen.</h2>
+  <div>
+    <p>Vor der ersten Zeile klären wir, welche Daten das System überhaupt zu sehen bekommt, wo sie verarbeitet werden und was beim Anbieter des Modells landet.</p>
+    <p>Wo es nötig ist, bleiben die Daten im Haus oder auf Servern in der EU. Was wo verarbeitet wird, steht vor Projektbeginn schriftlich fest.</p>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <h3 class="titel">So kommen die Leistungen zu Ihnen</h3>
+  <div class="stufen">
+    <div class="stufe erst"><h4>Potenzialanalyse</h4>
+      <div class="p">3.500 € <span>netto</span></div>
+      <p>Zwei bis vier Wochen: Prozessaufnahme vor Ort, Datenlage, drei bis fünf priorisierte Anwendungsfälle, Bericht mit Roadmap.</p></div>
+    <div class="stufe"><h4>Umsetzung</h4>
+      <div class="p">Festpreis</div>
+      <p>Wir bauen selbst und binden an Ihre Bestandssysteme an. Meilensteine und Preis vorher schriftlich, Digitalbonus-Antrag vorbereitet.</p></div>
+    <div class="stufe"><h4>Betrieb</h4>
+      <div class="p">ab 500 € <span>/ Monat</span></div>
+      <p>Wartung, Monitoring, Pflege der Modelle, Schulung, kleinere Erweiterungen. Quartalsweise kündbar.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap zwei">
+  <div>
+    <h3 class="titel">Die Förderung liefern wir mit</h3>
+    <p>Für das Umsetzungsprojekt kommt der Digitalbonus Bayern in Frage, für größere Vorhaben ein KfW-Kredit. Den Antrag bereiten wir vor, Sie unterschreiben.</p>
+    <p><a href="#">Die Programme im Detail</a></p>
+  </div>
+  <div>
+    <h3 class="titel">Wer das macht</h3>
+    <div class="person"><div class="ph">Foto<br>folgt</div>
+      <div><h4>Thomas Hemmerich</h4><p class="rolle">Architektur und Frontend</p>
+      <p>15 Jahre Softwareprojekte in regulierten Branchen.</p></div></div>
+    <div class="person"><div class="ph">Foto<br>folgt</div>
+      <div><h4>Christian Hartmann</h4><p class="rolle">Backend und Integration</p>
+      <p>20 Jahre Java und Spring, Anbindung an ERP-Systeme.</p></div></div>
+  </div>
+</div></section>
+
+<div class="abschluss"><div class="wrap">
+  <h2>Reden wir eine halbe Stunde darüber.</h2>
+  <p>Das Erstgespräch kostet nichts und endet mit einer klaren Aussage, ob sich KI bei Ihnen lohnt. Wenn nicht, sagen wir Ihnen das auch.</p>
+  <a class="tel" href="#">0176 23547994</a><a class="btn" href="#">Erstgespräch vereinbaren</a>
+</div></div>
+
+<footer><div class="wrap">Kiratio · Thomas Hemmerich und Christian Hartmann · info@kiratio.de · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></div></footer>
+</body>
+</html>
