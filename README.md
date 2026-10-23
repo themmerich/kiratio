@@ -1,6 +1,6 @@
 # Kiratio
 
-Website für Kiratio, eine KI-Beratung für kleine und mittlere Unternehmen in Mainfranken. Die Seite stellt das Angebot in drei Stufen dar (Potenzialanalyse, Umsetzung, Betrieb) und erklärt die dazugehörigen Förderprogramme.
+Website für Kiratio, eine KI-Beratung für kleine und mittlere Unternehmen in Mainfranken. Die Startseite führt die vier Leistungen auf (Beratung, Coaching, KI-Automatisierung, Individualsoftware), dahinter steht das Angebot in drei Stufen (Potenzialanalyse, Umsetzung, Betrieb) samt der dazugehörigen Förderprogramme.
 
 Namen, Telefonnummer und Mailadresse stehen und stammen von der Visitenkarte (`04 Firma/Visitenkarte/` im Vault). Die Anschrift steht seit dem 22.10.2026 im Impressum. Impressum und Datenschutzerklärung sind ausformuliert, Rechtsträger ist die Kiratio GbR. Offen sind noch die Fotos der beiden.
 
@@ -16,6 +16,10 @@ favicon.svg             Zeichen als Kachel, gefüllt, für kleine Größen
 index.html              Startseite
 potenzialanalyse.html   Ablauf und Umfang der Analyse
 umsetzung.html          Umsetzung, Integration und Betrieb
+beratung.html           Beratung, EU AI Act, die drei Beratungsformate
+coaching.html           Schulung und Begleitung, KI-Kompetenz nach Artikel 4 AI Act
+ki-automatisierung.html wiederkehrende Abläufe automatisieren
+individualsoftware.html eigene Software, wenn kein Produkt passt
 foerderung.html         Digitalbonus Bayern, KfW
 ueber-uns.html          die beiden Personen hinter Kiratio
 kontakt.html            Erstgespräch und Anfahrt
